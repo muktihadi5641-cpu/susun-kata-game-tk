@@ -133,6 +133,71 @@ html,body{width:100%;height:100%;overflow:hidden;background:#05051a;display:flex
 @keyframes rainbowPulse{0%{filter:hue-rotate(0deg) brightness(1.2)}100%{filter:hue-rotate(360deg) brightness(1.2)}}
 @keyframes grassWave{0%,100%{transform:scaleY(1) translateY(0)}50%{transform:scaleY(1.05) translateY(-4px)}}
 @keyframes waveScroll{from{transform:translateX(0)}to{transform:translateX(-960px)}}
+
+/* ═══════════════════════════ ENG MODE STYLES ═══════════════════════════ */
+#s-eng-submode,#s-eng-topic,#s-eng-game,#s-eng-cel{z-index:15;}
+#s-eng-submode,#s-eng-topic{gap:0;padding:30px 40px 50px;overflow:hidden;}
+.eng-title{font-family:var(--fg);font-size:82px;color:#FFD600;text-shadow:6px 6px 0 #e65100,12px 12px 0 rgba(0,0,0,0.3);margin-bottom:48px;animation:tBounce 1.5s ease-in-out infinite alternate;letter-spacing:4px;text-align:center;}
+.eng-sub-grid,.eng-topic-grid{display:flex;gap:36px;justify-content:center;align-items:stretch;flex-wrap:wrap;}
+.eng-mode-card,.eng-topic-card{
+  width:340px;min-height:340px;border-radius:36px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:18px;cursor:pointer;
+  box-shadow:0 20px 60px rgba(0,0,0,0.45),0 5px 0 rgba(0,0,0,0.3);
+  transition:transform 0.18s,box-shadow 0.18s;border:4px solid rgba(255,255,255,0.25);
+  position:relative;overflow:hidden;padding:24px;
+}
+.eng-mode-card:hover,.eng-topic-card:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 30px 80px rgba(0,0,0,0.5),0 5px 0 rgba(0,0,0,0.3);}
+.eng-mode-card:active,.eng-topic-card:active{transform:scale(0.96);}
+.eng-mode-card::before,.eng-topic-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.18) 0%,transparent 50%,rgba(0,0,0,0.1) 100%);pointer-events:none;}
+.eng-card-icon{font-size:90px;line-height:1;filter:drop-shadow(4px 6px 10px rgba(0,0,0,0.35));animation:iconRock 2.2s ease-in-out infinite alternate;}
+.eng-card-name{font-family:var(--fg);font-size:48px;color:#fff;text-shadow:3px 3px 8px rgba(0,0,0,0.4);text-align:center;}
+.eng-card-desc{font-size:24px;color:rgba(255,255,255,0.82);font-weight:700;text-align:center;line-height:1.4;}
+.eng-chapter-card{width:310px;height:355px;border-radius:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;cursor:pointer;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.45),0 5px 0 rgba(0,0,0,0.3);transition:transform 0.18s,box-shadow 0.18s;border:4px solid rgba(255,255,255,0.25);background:linear-gradient(145deg,#7b1c1c,#b71c1c,#c62828);}
+.eng-chapter-card:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 30px 80px rgba(0,0,0,0.5),0 5px 0 rgba(0,0,0,0.3);}
+.eng-chapter-card:active{transform:scale(0.96);}
+.eng-chapter-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.18) 0%,transparent 50%,rgba(0,0,0,0.1) 100%);pointer-events:none;}
+/* ENG GAME */
+#s-eng-game{flex-direction:column;gap:0;padding:28px 48px;}
+#eng-top-bar{width:100%;display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+#eng-counter-wrap{font-family:var(--fg);font-size:38px;color:#fff;background:rgba(0,0,0,0.38);padding:10px 28px;border-radius:50px;display:flex;gap:10px;align-items:center;}
+#eng-game-body{width:100%;flex:1;display:flex;align-items:center;justify-content:center;gap:0;}
+/* MODE 1 */
+#eng-m1-wrap{width:100%;display:flex;flex-direction:column;align-items:center;gap:32px;}
+#eng-m1-word-row{display:flex;align-items:center;justify-content:center;gap:28px;}
+#eng-m1-word{font-family:var(--fg);font-size:120px;color:#FFD600;text-shadow:6px 6px 0 #e65100,12px 12px 0 rgba(0,0,0,0.3);letter-spacing:8px;}
+#eng-m1-meaning{font-family:var(--fg);font-size:52px;color:rgba(255,255,255,0.7);text-shadow:3px 3px 6px rgba(0,0,0,0.4);}
+.eng-speak-btn{font-size:52px;background:rgba(255,214,0,0.25);border:4px solid rgba(255,214,0,0.5);border-radius:50%;width:100px;height:100px;color:#FFD600;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s,transform 0.1s;}
+.eng-speak-btn:hover{background:rgba(255,214,0,0.4);transform:scale(1.1);}
+.eng-speak-btn:active{transform:scale(0.9);}
+#eng-m1-choices{display:flex;gap:40px;justify-content:center;align-items:stretch;}
+.eng-choice-card{width:310px;min-height:340px;border-radius:36px;background:rgba(255,255,255,0.12);border:5px solid rgba(255,255,255,0.28);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;cursor:pointer;box-shadow:0 12px 40px rgba(0,0,0,0.3);transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s,background 0.2s;position:relative;overflow:hidden;padding:18px;backdrop-filter:blur(8px);}
+.eng-choice-card:hover{transform:translateY(-6px) scale(1.04);border-color:rgba(255,255,255,0.6);box-shadow:0 20px 60px rgba(0,0,0,0.4);}
+.eng-choice-card svg{width:100%;max-height:230px;}
+.eng-choice-lbl{font-family:var(--fg);font-size:36px;color:#fff;text-shadow:3px 3px 6px rgba(0,0,0,0.5);text-align:center;}
+.eng-choice-card.ec-correct{border-color:#66bb6a;background:rgba(102,187,106,0.25);animation:pop 0.4s ease;}
+.eng-choice-card.ec-wrong{border-color:#e53935;background:rgba(229,57,53,0.15);animation:shake 0.45s ease;}
+@keyframes pop{0%{transform:scale(1);}40%{transform:scale(1.1);}70%{transform:scale(.97);}100%{transform:scale(1);}}
+@keyframes shake{0%,100%{transform:translateX(0);}20%{transform:translateX(-10px) rotate(-2deg);}40%{transform:translateX(10px) rotate(2deg);}60%{transform:translateX(-8px);}80%{transform:translateX(8px);}}
+/* MODE 2 */
+#eng-m2-wrap{width:100%;display:flex;align-items:center;justify-content:center;gap:72px;}
+#eng-m2-img{flex:0 0 auto;width:370px;height:370px;background:rgba(255,255,255,0.13);border:6px solid rgba(255,255,255,0.38);border-radius:40px;display:flex;align-items:center;justify-content:center;box-shadow:0 16px 60px rgba(0,0,0,0.28),inset 0 2px 8px rgba(255,255,255,0.1);backdrop-filter:blur(10px);overflow:hidden;}
+#eng-m2-img svg{width:100%;height:100%;}
+#eng-m2-right{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:48px;}
+#eng-m2-slots{display:flex;gap:16px;align-items:center;justify-content:center;flex-wrap:wrap;}
+#eng-m2-bubbles{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:center;max-width:840px;}
+.eng-bubble{border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fg);color:#fff;text-shadow:3px 3px 8px rgba(0,0,0,0.4);cursor:pointer;position:relative;box-shadow:0 12px 40px rgba(0,0,0,0.28),inset 0 4px 12px rgba(255,255,255,0.5),inset -4px -6px 12px rgba(0,0,0,0.14);width:140px;height:140px;font-size:80px;border:none;animation:floatBubl 2.8s ease-in-out infinite;transition:transform 0.15s,opacity 0.2s;}
+.eng-bubble::before{content:'';position:absolute;top:14%;left:20%;width:35%;height:25%;background:rgba(255,255,255,0.52);border-radius:50%;transform:rotate(-30deg);pointer-events:none;}
+.eng-bubble:hover{transform:scale(1.12) rotate(-5deg);animation:none;}
+.eng-bubble:active{transform:scale(0.92);}
+.eng-bubble.eb-used{opacity:0;pointer-events:none;transform:scale(0);}
+.eng-bubble:nth-child(2){animation-delay:.25s;}.eng-bubble:nth-child(3){animation-delay:.5s;}.eng-bubble:nth-child(4){animation-delay:.75s;}.eng-bubble:nth-child(5){animation-delay:.15s;}.eng-bubble:nth-child(6){animation-delay:.6s;}.eng-bubble:nth-child(7){animation-delay:.35s;}.eng-bubble:nth-child(8){animation-delay:.8s;}
+.eng-lslot{border-radius:22px;background:rgba(255,255,255,0.24);border:6px dashed rgba(255,255,255,0.56);display:flex;align-items:center;justify-content:center;font-family:var(--fg);color:#fff;text-shadow:3px 3px 6px rgba(0,0,0,0.4);box-shadow:0 8px 30px rgba(0,0,0,0.2);transition:background 0.28s,border-color 0.28s;width:128px;height:128px;font-size:80px;}
+.eng-lslot.el-filled{background:rgba(102,187,106,0.35);border:6px solid #66bb6a;animation:slotLock 0.42s cubic-bezier(0.34,1.56,0.64,1);}
+/* ENG CELEBRATION */
+#s-eng-cel{z-index:22;flex-direction:column;gap:36px;}
+#eng-cel-emoji{font-size:160px;line-height:1;animation:sPop 0.6s cubic-bezier(0.34,1.56,0.64,1);}
+#eng-cel-word{font-family:var(--fg);font-size:140px;color:#FFD600;text-shadow:10px 10px 0 #e65100,20px 20px 0 rgba(0,0,0,0.3);animation:sPop 0.62s cubic-bezier(0.34,1.56,0.64,1);letter-spacing:10px;}
+#eng-cel-meaning{font-family:var(--fg);font-size:58px;color:rgba(255,255,255,0.88);text-shadow:4px 4px 8px rgba(0,0,0,0.5);}
 </style>
 </head>
 <body>
@@ -228,6 +293,76 @@ html,body{width:100%;height:100%;overflow:hidden;background:#05051a;display:flex
   </svg>
   <p>Kamu sudah menyelesaikan semua chapter!</p>
   <button class="btn-main" onclick="resetAll()">&#128260; Main Lagi</button>
+</div>
+
+
+<!-- ══════════════════ ENG: SUB-MODE SELECT ══════════════════ -->
+<div id="s-eng-submode" class="screen hidden">
+  <div class="eng-title">🇬🇧 Belajar Bahasa Inggris</div>
+  <div class="eng-sub-grid">
+    <div class="eng-mode-card" style="background:linear-gradient(145deg,#0d47a1,#1565c0,#1976d2)" onclick="engSelectSubMode(1)">
+      <div class="eng-card-icon">🔍</div>
+      <div class="eng-card-name">Find the Picture</div>
+      <div class="eng-card-desc">Lihat kata, temukan<br>gambarnya yang benar!</div>
+    </div>
+    <div class="eng-mode-card" style="background:linear-gradient(145deg,#4a148c,#6a1b9a,#7b1fa2)" onclick="engSelectSubMode(2)">
+      <div class="eng-card-icon">🫧</div>
+      <div class="eng-card-name">Letter Bubbles</div>
+      <div class="eng-card-desc">Lihat gambar, susun<br>huruf-hurufnya!</div>
+    </div>
+  </div>
+  <div style="margin-top:40px;display:flex;gap:16px;justify-content:center;">
+    <button class="iBtn" style="width:90px;height:90px;font-size:44px;" onclick="showChapters()">&#8592;</button>
+  </div>
+</div>
+
+<!-- ══════════════════ ENG: TOPIC SELECT ══════════════════ -->
+<div id="s-eng-topic" class="screen hidden">
+  <div class="eng-title" id="eng-topic-title">Pilih Topik</div>
+  <div class="eng-topic-grid" id="eng-topic-grid"></div>
+  <div style="margin-top:40px;">
+    <button class="iBtn" style="width:90px;height:90px;font-size:44px;" onclick="showScreen('s-eng-submode')">&#8592;</button>
+  </div>
+</div>
+
+<!-- ══════════════════ ENG: GAME ══════════════════ -->
+<div id="s-eng-game" class="screen hidden">
+  <div id="eng-top-bar">
+    <div style="display:flex;gap:12px;align-items:center;">
+      <button class="iBtn" onclick="backToEngTopics()" title="Kembali">&#8592;</button>
+      <div id="eng-counter-wrap"></div>
+    </div>
+    <div class="top-btns">
+      <button class="eng-speak-btn" id="eng-speak-btn" onclick="engSpeak()">🔊</button>
+      <button class="iBtn" id="btn-fs2" onclick="toggleFS()">&#9974;</button>
+    </div>
+  </div>
+  <div id="eng-game-body">
+    <!-- Mode 1: Find the Picture -->
+    <div id="eng-m1-wrap" style="display:none;">
+      <div id="eng-m1-word-row">
+        <div id="eng-m1-word">FACE</div>
+        <div id="eng-m1-meaning">(Wajah)</div>
+      </div>
+      <div id="eng-m1-choices"></div>
+    </div>
+    <!-- Mode 2: Letter Bubbles -->
+    <div id="eng-m2-wrap" style="display:none;">
+      <div id="eng-m2-img"></div>
+      <div id="eng-m2-right">
+        <div id="eng-m2-slots"></div>
+        <div id="eng-m2-bubbles"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ ENG: CELEBRATION ══════════════════ -->
+<div id="s-eng-cel" class="screen hidden">
+  <div id="eng-cel-emoji">🎉</div>
+  <div id="eng-cel-word">FACE</div>
+  <div id="eng-cel-meaning">Wajah</div>
+  <button class="btn-next" onclick="engNextWord()">Lanjut &#10145;</button>
 </div>
 
 </div><!-- #gw -->
@@ -815,6 +950,376 @@ const CHAPTERS=[
 }
 ];
 
+/* ============================================================
+   ENG MODE — VOCABULARY DATA (3 Topics)
+============================================================ */
+const ENG_SVGS={
+head:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><rect x="78" y="165" width="44" height="38" rx="10" fill="#FDDBB4"/><ellipse cx="100" cy="105" rx="78" ry="88" fill="#FDDBB4"/><ellipse cx="100" cy="26" rx="78" ry="32" fill="#8B5E3C"/><ellipse cx="22" cy="112" rx="13" ry="18" fill="#FDDBB4"/><ellipse cx="178" cy="112" rx="13" ry="18" fill="#FDDBB4"/><ellipse cx="22" cy="112" rx="7" ry="11" fill="#F5C28A"/><ellipse cx="178" cy="112" rx="7" ry="11" fill="#F5C28A"/><ellipse cx="76" cy="112" rx="10" ry="12" fill="white" stroke="#333" stroke-width="2"/><circle cx="76" cy="113" r="6" fill="#222"/><ellipse cx="124" cy="112" rx="10" ry="12" fill="white" stroke="#333" stroke-width="2"/><circle cx="124" cy="113" r="6" fill="#222"/><path d="M84,142 Q100,154 116,142" fill="#F48FB1" stroke="#C2185B" stroke-width="2" stroke-linecap="round"/></svg>`,
+hair:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><ellipse cx="100" cy="125" rx="72" ry="78" fill="#FDDBB4"/><path d="M28,112 Q22,42 100,28 Q178,42 172,112" fill="#FF8F2B" stroke="#E65100" stroke-width="2"/><path d="M40,92 Q32,58 50,34" fill="none" stroke="#E65100" stroke-width="4" stroke-linecap="round"/><path d="M58,70 Q52,40 72,26" fill="none" stroke="#E65100" stroke-width="4" stroke-linecap="round"/><path d="M100,62 Q100,34 100,26" fill="none" stroke="#E65100" stroke-width="4" stroke-linecap="round"/><path d="M142,70 Q148,40 128,26" fill="none" stroke="#E65100" stroke-width="4" stroke-linecap="round"/><path d="M160,92 Q168,58 150,34" fill="none" stroke="#E65100" stroke-width="4" stroke-linecap="round"/><circle cx="76" cy="134" r="9" fill="white" stroke="#333" stroke-width="2"/><circle cx="76" cy="135" r="5" fill="#222"/><circle cx="124" cy="134" r="9" fill="white" stroke="#333" stroke-width="2"/><circle cx="124" cy="135" r="5" fill="#222"/><path d="M84,158 Q100,168 116,158" fill="none" stroke="#C2185B" stroke-width="3" stroke-linecap="round"/></svg>`,
+face:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><ellipse cx="100" cy="108" rx="76" ry="84" fill="#FDDBB4" stroke="#F5A623" stroke-width="3"/><path d="M68,78 Q80,70 93,78" fill="none" stroke="#8B5E3C" stroke-width="3" stroke-linecap="round"/><path d="M107,78 Q120,70 132,78" fill="none" stroke="#8B5E3C" stroke-width="3" stroke-linecap="round"/><ellipse cx="80" cy="98" rx="12" ry="13" fill="white" stroke="#333" stroke-width="2"/><circle cx="81" cy="100" r="7" fill="#3A5BA0"/><circle cx="83" cy="98" r="2.5" fill="white"/><ellipse cx="120" cy="98" rx="12" ry="13" fill="white" stroke="#333" stroke-width="2"/><circle cx="121" cy="100" r="7" fill="#3A5BA0"/><circle cx="123" cy="98" r="2.5" fill="white"/><ellipse cx="100" cy="122" rx="7" ry="5" fill="#F5A623"/><circle cx="95" cy="123" r="3" fill="#E8975C"/><circle cx="105" cy="123" r="3" fill="#E8975C"/><path d="M80,144 Q100,160 120,144" fill="#F48FB1" stroke="#C2185B" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="62" cy="124" rx="11" ry="7" fill="#FFB3C6" opacity=".7"/><ellipse cx="138" cy="124" rx="11" ry="7" fill="#FFB3C6" opacity=".7"/></svg>`,
+eye:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><ellipse cx="100" cy="95" rx="84" ry="52" fill="white" stroke="#333" stroke-width="5"/><circle cx="100" cy="95" r="36" fill="#42A5F5"/><circle cx="100" cy="95" r="21" fill="#1A237E"/><circle cx="114" cy="82" r="8" fill="white" opacity=".9"/><path d="M30,78 Q18,64 16,52" fill="none" stroke="#333" stroke-width="4" stroke-linecap="round"/><path d="M54,60 Q48,44 46,32" fill="none" stroke="#333" stroke-width="4" stroke-linecap="round"/><path d="M80,52 Q80,36 82,26" fill="none" stroke="#333" stroke-width="4" stroke-linecap="round"/><path d="M108,52 Q110,36 114,26" fill="none" stroke="#333" stroke-width="4" stroke-linecap="round"/><path d="M134,60 Q140,44 146,34" fill="none" stroke="#333" stroke-width="4" stroke-linecap="round"/><path d="M158,78 Q170,64 176,52" fill="none" stroke="#333" stroke-width="4" stroke-linecap="round"/><path d="M18,42 Q100,14 182,42" fill="none" stroke="#8B5E3C" stroke-width="9" stroke-linecap="round"/><text x="100" y="168" text-anchor="middle" font-family="Fredoka One,cursive" font-size="18" fill="#1565C0">EYE (Mata)</text></svg>`,
+nose:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M100,22 Q86,66 70,105 Q60,130 68,142 Q78,156 100,156 Q122,156 132,142 Q140,130 130,105 Q114,66 100,22Z" fill="#FDDBB4" stroke="#E8975C" stroke-width="4"/><ellipse cx="80" cy="144" rx="13" ry="9" fill="#E8975C"/><ellipse cx="120" cy="144" rx="13" ry="9" fill="#E8975C"/><ellipse cx="80" cy="146" rx="7" ry="5" fill="#C67B3A"/><ellipse cx="120" cy="146" rx="7" ry="5" fill="#C67B3A"/><ellipse cx="90" cy="78" rx="7" ry="20" fill="rgba(255,255,255,0.4)" transform="rotate(-8,90,78)"/><text x="100" y="185" text-anchor="middle" font-family="Fredoka One,cursive" font-size="16" fill="#E65100">NOSE (Hidung)</text></svg>`,
+mouth:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M30,80 Q60,52 100,56 Q140,52 170,80 Q160,116 100,122 Q40,116 30,80Z" fill="#F48FB1" stroke="#C2185B" stroke-width="3"/><path d="M42,86 Q100,100 158,86 L155,108 Q100,118 45,108Z" fill="white" stroke="#ddd" stroke-width="1.5"/><ellipse cx="100" cy="112" rx="32" ry="16" fill="#EF5350"/><circle cx="30" cy="80" r="5" fill="#C2185B"/><circle cx="170" cy="80" r="5" fill="#C2185B"/><text x="100" y="158" text-anchor="middle" font-family="Fredoka One,cursive" font-size="14" fill="#C2185B">MOUTH (Mulut)</text></svg>`,
+ear:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><ellipse cx="100" cy="98" rx="62" ry="84" fill="#FDDBB4" stroke="#E8975C" stroke-width="5"/><ellipse cx="100" cy="98" rx="46" ry="66" fill="#F5C28A" stroke="#E8975C" stroke-width="3"/><ellipse cx="108" cy="105" rx="28" ry="44" fill="#FDDBB4" stroke="#D9892A" stroke-width="2"/><ellipse cx="114" cy="107" rx="13" ry="18" fill="#D9892A"/><ellipse cx="114" cy="107" rx="7" ry="11" fill="#B8620E"/><path d="M50,50 Q34,98 50,148" fill="none" stroke="#E8975C" stroke-width="6" stroke-linecap="round"/><ellipse cx="100" cy="174" rx="26" ry="16" fill="#FDDBB4" stroke="#E8975C" stroke-width="3"/><circle cx="100" cy="184" r="7" fill="#FFD93D" stroke="#FFC107" stroke-width="2"/><text x="100" y="200" text-anchor="middle" font-family="Fredoka One,cursive" font-size="16" fill="#E65100">EAR</text></svg>`,
+forehead:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><ellipse cx="100" cy="122" rx="76" ry="80" fill="#FDDBB4"/><path d="M24,108 Q24,32 100,24 Q176,32 176,108" fill="#8B5E3C"/><path d="M38,105 Q38,65 100,58 Q162,65 162,105 Q130,100 100,100 Q70,100 38,105Z" fill="#FFD93D" opacity=".65" stroke="#FFC107" stroke-width="3" stroke-dasharray="8 4"/><ellipse cx="78" cy="134" rx="10" ry="11" fill="white" stroke="#333" stroke-width="2"/><circle cx="79" cy="135" r="5" fill="#222"/><ellipse cx="122" cy="134" rx="10" ry="11" fill="white" stroke="#333" stroke-width="2"/><circle cx="123" cy="135" r="5" fill="#222"/><path d="M86,156 Q100,166 114,156" fill="none" stroke="#C2185B" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+eyebrow:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="28" width="184" height="98" rx="18" fill="#FDDBB4"/><path d="M20,86 Q54,56 88,70" fill="none" stroke="#5D4037" stroke-width="18" stroke-linecap="round"/><path d="M20,86 Q54,56 88,70" fill="none" stroke="#8D6E63" stroke-width="12" stroke-linecap="round" opacity=".8"/><path d="M112,70 Q146,56 180,86" fill="none" stroke="#5D4037" stroke-width="18" stroke-linecap="round"/><path d="M112,70 Q146,56 180,86" fill="none" stroke="#8D6E63" stroke-width="12" stroke-linecap="round" opacity=".8"/><path d="M20,86 Q54,56 88,70" fill="none" stroke="#FFD93D" stroke-width="22" stroke-linecap="round" opacity=".35"/><ellipse cx="54" cy="118" rx="21" ry="16" fill="white" stroke="#333" stroke-width="2"/><circle cx="55" cy="119" r="9" fill="#42A5F5"/><circle cx="55" cy="119" r="4" fill="#1A237E"/><ellipse cx="146" cy="118" rx="21" ry="16" fill="white" stroke="#333" stroke-width="2"/><circle cx="147" cy="119" r="9" fill="#42A5F5"/><circle cx="147" cy="119" r="4" fill="#1A237E"/><text x="100" y="165" text-anchor="middle" font-family="Fredoka One,cursive" font-size="13" fill="#5D4037">EYEBROW (Alis)</text></svg>`,
+lips:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M24,82 Q48,66 80,76 Q100,62 120,76 Q152,66 176,82 Q162,102 100,106 Q38,102 24,82Z" fill="#E91E8C"/><path d="M24,82 Q60,76 80,80 L100,70 L120,80 Q140,76 176,82" fill="#C2185B" opacity=".5"/><path d="M24,82 Q38,122 100,132 Q162,122 176,82 Q150,106 100,110 Q50,106 24,82Z" fill="#F06292"/><ellipse cx="73" cy="73" rx="19" ry="6" fill="rgba(255,255,255,0.5)" transform="rotate(-8,73,73)"/><ellipse cx="100" cy="118" rx="26" ry="5" fill="rgba(255,255,255,0.35)"/><circle cx="24" cy="82" r="4" fill="#AD1457"/><circle cx="176" cy="82" r="4" fill="#AD1457"/><text x="100" y="162" text-anchor="middle" font-family="Fredoka One,cursive" font-size="16" fill="#AD1457">LIPS (Bibir)</text></svg>`,
+teeth:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M18,66 Q60,42 100,47 Q140,42 182,66 Q170,110 100,120 Q30,110 18,66Z" fill="#E91E8C"/><rect x="28" y="68" width="144" height="12" rx="6" fill="#F48FB1"/><rect x="32" y="74" width="20" height="28" rx="5" fill="white" stroke="#E0E0E0" stroke-width="1.5"/><rect x="56" y="72" width="24" height="31" rx="5" fill="white" stroke="#E0E0E0" stroke-width="1.5"/><rect x="84" y="71" width="24" height="32" rx="5" fill="white" stroke="#E0E0E0" stroke-width="1.5"/><rect x="112" y="72" width="24" height="31" rx="5" fill="white" stroke="#E0E0E0" stroke-width="1.5"/><rect x="140" y="74" width="20" height="28" rx="5" fill="white" stroke="#E0E0E0" stroke-width="1.5"/><rect x="38" y="102" width="20" height="20" rx="4" fill="#FAFAFA" stroke="#E0E0E0" stroke-width="1.5"/><rect x="62" y="100" width="24" height="22" rx="4" fill="#FAFAFA" stroke="#E0E0E0" stroke-width="1.5"/><rect x="90" y="99" width="20" height="22" rx="4" fill="#FAFAFA" stroke="#E0E0E0" stroke-width="1.5"/><rect x="114" y="100" width="24" height="22" rx="4" fill="#FAFAFA" stroke="#E0E0E0" stroke-width="1.5"/><rect x="142" y="102" width="20" height="20" rx="4" fill="#FAFAFA" stroke="#E0E0E0" stroke-width="1.5"/><text x="100" y="156" text-anchor="middle" font-family="Fredoka One,cursive" font-size="16" fill="#C2185B">TEETH (Gigi)</text></svg>`,
+tongue:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M20,52 Q60,28 100,32 Q140,28 180,52 Q168,90 100,100 Q32,90 20,52Z" fill="#E91E8C"/><rect x="30" y="56" width="140" height="24" rx="8" fill="white" stroke="#ddd" stroke-width="1.5"/><path d="M36,76 Q38,148 100,158 Q162,148 164,76Z" fill="#EF5350"/><line x1="100" y1="80" x2="100" y2="152" stroke="#C62828" stroke-width="4" stroke-linecap="round" opacity=".7"/><ellipse cx="100" cy="155" rx="30" ry="11" fill="#EF5350"/><ellipse cx="83" cy="106" rx="11" ry="28" fill="rgba(255,255,255,0.28)" transform="rotate(-5,83,106)"/><text x="100" y="188" text-anchor="middle" font-family="Fredoka One,cursive" font-size="14" fill="#B71C1C">TONGUE (Lidah)</text></svg>`,
+cheek:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><ellipse cx="100" cy="115" rx="78" ry="84" fill="#FDDBB4"/><path d="M22,100 Q24,36 100,28 Q176,36 178,100" fill="#FF8F2B"/><ellipse cx="52" cy="132" rx="24" ry="18" fill="#FFB3C6" stroke="#F48FB1" stroke-width="2"/><ellipse cx="52" cy="132" rx="16" ry="12" fill="#FF8A9F" opacity=".7"/><ellipse cx="148" cy="132" rx="24" ry="18" fill="#FFB3C6" opacity=".5"/><ellipse cx="78" cy="110" rx="10" ry="11" fill="white" stroke="#333" stroke-width="2"/><circle cx="79" cy="111" r="5" fill="#222"/><ellipse cx="122" cy="110" rx="10" ry="11" fill="white" stroke="#333" stroke-width="2"/><circle cx="123" cy="111" r="5" fill="#222"/><ellipse cx="100" cy="128" rx="6" ry="4" fill="#E8975C"/><path d="M80,148 Q100,160 120,148" fill="#F48FB1" stroke="#C2185B" stroke-width="2" stroke-linecap="round"/><text x="100" y="195" text-anchor="middle" font-family="Fredoka One,cursive" font-size="16" fill="#E91E8C">CHEEK (Pipi)</text></svg>`,
+chin:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><ellipse cx="100" cy="100" rx="78" ry="84" fill="#FDDBB4"/><path d="M22,86 Q24,20 100,12 Q176,20 178,86" fill="#42A5F5"/><path d="M60,162 Q100,192 140,162 Q145,176 100,186 Q55,176 60,162Z" fill="#FFD93D" stroke="#FFC107" stroke-width="2.5"/><ellipse cx="78" cy="100" rx="10" ry="11" fill="white" stroke="#333" stroke-width="2"/><circle cx="79" cy="101" r="5" fill="#222"/><ellipse cx="122" cy="100" rx="10" ry="11" fill="white" stroke="#333" stroke-width="2"/><circle cx="123" cy="101" r="5" fill="#222"/><ellipse cx="100" cy="122" rx="7" ry="5" fill="#E8975C"/><circle cx="96" cy="123" r="2.5" fill="#C67B3A"/><circle cx="104" cy="123" r="2.5" fill="#C67B3A"/><path d="M82,142 Q100,154 118,142" fill="#F48FB1" stroke="#C2185B" stroke-width="2" stroke-linecap="round"/><ellipse cx="60" cy="125" rx="11" ry="8" fill="#FFB3C6" opacity=".6"/><ellipse cx="140" cy="125" rx="11" ry="8" fill="#FFB3C6" opacity=".6"/><text x="100" y="200" text-anchor="middle" font-family="Fredoka One,cursive" font-size="16" fill="#E65100">CHIN (Dagu)</text></svg>`
+};
+
+const ENG_TOPICS=[
+  {
+    key:'head_face',title:'Kepala & Wajah',emoji:'🧠',
+    sub:'Head & Face Parts',
+    card:['#1a237e','#283593','#3949ab'],
+    bg:'linear-gradient(170deg,#0d1b4a 0%,#1a237e 45%,#3949ab 78%,#90caf9 100%)',
+    decors:['👁️','👂','👃','👄','🦷','😊','✨','🌟'],
+    words:[
+      {en:'HEAD',   id:'Kepala',  key:'head'},
+      {en:'HAIR',   id:'Rambut',  key:'hair'},
+      {en:'FACE',   id:'Wajah',   key:'face'},
+      {en:'EYE',    id:'Mata',    key:'eye'},
+      {en:'NOSE',   id:'Hidung',  key:'nose'},
+      {en:'MOUTH',  id:'Mulut',   key:'mouth'},
+      {en:'EAR',    id:'Telinga', key:'ear'},
+      {en:'FOREHEAD',id:'Dahi',   key:'forehead'},
+      {en:'EYEBROW',id:'Alis',    key:'eyebrow'},
+      {en:'LIPS',   id:'Bibir',   key:'lips'},
+      {en:'TEETH',  id:'Gigi',    key:'teeth'},
+      {en:'TONGUE', id:'Lidah',   key:'tongue'},
+      {en:'CHEEK',  id:'Pipi',    key:'cheek'},
+      {en:'CHIN',   id:'Dagu',    key:'chin'}
+    ]
+  },
+  {
+    key:'animals',title:'Animals',emoji:'🐾',
+    sub:'Hewan-Hewan Lucu',
+    card:['#1b5e20','#2e7d32','#43a047'],
+    bg:'linear-gradient(170deg,#0a1f0a 0%,#1b5e20 45%,#43a047 78%,#a5d6a7 100%)',
+    decors:['🐶','🐱','🐸','🐮','🦁','🐧','🐰','🦊'],
+    words:[
+      {en:'DOG',    id:'Anjing',  key:'dog'},
+      {en:'CAT',    id:'Kucing',  key:'cat'},
+      {en:'FISH',   id:'Ikan',    key:'fish'},
+      {en:'BIRD',   id:'Burung',  key:'bird'},
+      {en:'FROG',   id:'Katak',   key:'frog'},
+      {en:'COW',    id:'Sapi',    key:'cow'}
+    ]
+  },
+  {
+    key:'colors',title:'Colors',emoji:'🌈',
+    sub:'Warna-Warni Indah',
+    card:['#880e4f','#ad1457','#c2185b'],
+    bg:'linear-gradient(170deg,#2e0218 0%,#880e4f 45%,#e91e8c 78%,#f8bbd0 100%)',
+    decors:['🌈','❤️','💛','💚','💙','💜','🧡','🤍'],
+    words:[
+      {en:'RED',    id:'Merah',   key:'col_red'},
+      {en:'BLUE',   id:'Biru',    key:'col_blue'},
+      {en:'GREEN',  id:'Hijau',   key:'col_green'},
+      {en:'YELLOW', id:'Kuning',  key:'col_yellow'},
+      {en:'ORANGE', id:'Oranye',  key:'col_orange'},
+      {en:'PURPLE', id:'Ungu',    key:'col_purple'},
+      {en:'PINK',   id:'Pink',    key:'col_pink'},
+      {en:'WHITE',  id:'Putih',   key:'col_white'}
+    ]
+  }
+];
+
+// Animals SVG
+const ENG_SVGS_EXTRA={
+  dog:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><ellipse cx="100" cy="185" rx="55" ry="10" fill="rgba(0,0,0,0.15)"/><ellipse cx="100" cy="135" rx="70" ry="55" fill="#c8a06e"/><circle cx="100" cy="82" r="66" fill="#c8a06e"/><ellipse cx="62" cy="70" rx="22" ry="38" fill="#a0704a" transform="rotate(-20,62,70)"/><ellipse cx="138" cy="70" rx="22" ry="38" fill="#a0704a" transform="rotate(20,138,70)"/><circle cx="78" cy="88" r="14" fill="white"/><circle cx="122" cy="88" r="14" fill="white"/><circle cx="80" cy="90" r="8" fill="#333"><animate attributeName="cx" values="80;84;80;76;80" dur="4s" repeatCount="indefinite"/></circle><circle cx="124" cy="90" r="8" fill="#333"><animate attributeName="cx" values="124;128;124;120;124" dur="4s" repeatCount="indefinite"/></circle><circle cx="82" cy="86" r="3" fill="white"/><circle cx="126" cy="86" r="3" fill="white"/><ellipse cx="100" cy="116" rx="22" ry="16" fill="#e8b890"/><ellipse cx="90" cy="117" rx="8" ry="6" fill="#d4987a"/><ellipse cx="110" cy="117" rx="8" ry="6" fill="#d4987a"/><path d="M90,130 Q100,140 110,130" fill="none" stroke="#a0704a" stroke-width="3" stroke-linecap="round"/><ellipse cx="68" cy="104" rx="14" ry="8" fill="#ff8a80" opacity=".4"/><ellipse cx="132" cy="104" rx="14" ry="8" fill="#ff8a80" opacity=".4"/><path d="M155,130 Q188,115 178,155 Q168,175 148,162" stroke="#c8a06e" stroke-width="16" fill="none" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" values="-8,155,132;8,155,132;-8,155,132" dur="0.6s" repeatCount="indefinite"/></path><text x="100" y="196" text-anchor="middle" font-family="Fredoka One,cursive" font-size="16" fill="#5D4037">DOG (Anjing)</text></svg>`,
+  cat:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><ellipse cx="100" cy="185" rx="48" ry="8" fill="rgba(0,0,0,0.15)"/><ellipse cx="100" cy="135" rx="62" ry="52" fill="#ffcc80"/><circle cx="100" cy="84" r="66" fill="#ffcc80"/><polygon points="64,52 48,14 92,44" fill="#ffcc80"/><polygon points="136,52 152,14 108,44" fill="#ffcc80"/><polygon points="68,50 58,22 90,46" fill="#ff8a80"/><polygon points="132,50 142,22 110,46" fill="#ff8a80"/><ellipse cx="78" cy="78" rx="17" ry="19" fill="#4caf50"/><ellipse cx="122" cy="78" rx="17" ry="19" fill="#4caf50"/><ellipse cx="78" cy="79" rx="7" ry="15" fill="#222"><animate attributeName="ry" values="15;3;15" dur="5s" repeatCount="indefinite"/></ellipse><ellipse cx="122" cy="79" rx="7" ry="15" fill="#222"><animate attributeName="ry" values="15;3;15" dur="5s" repeatCount="indefinite"/></ellipse><circle cx="81" cy="74" r="4" fill="white"/><circle cx="125" cy="74" r="4" fill="white"/><polygon points="100,100 93,112 107,112" fill="#ff8a80"/><path d="M93,112 Q82,124 72,120" stroke="#a16946" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M107,112 Q118,124 128,120" stroke="#a16946" stroke-width="2.5" fill="none" stroke-linecap="round"/><line x1="72" y1="104" x2="28" y2="95" stroke="#a16946" stroke-width="2.5" stroke-linecap="round"/><line x1="72" y1="112" x2="25" y2="112" stroke="#a16946" stroke-width="2.5" stroke-linecap="round"/><line x1="128" y1="104" x2="172" y2="95" stroke="#a16946" stroke-width="2.5" stroke-linecap="round"/><line x1="128" y1="112" x2="175" y2="112" stroke="#a16946" stroke-width="2.5" stroke-linecap="round"/><path d="M158,132 Q200,115 190,164 Q180,185 155,170" stroke="#ffcc80" stroke-width="16" fill="none" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" values="-10,158,134;10,158,134;-10,158,134" dur="1.5s" repeatCount="indefinite"/></path><text x="100" y="197" text-anchor="middle" font-family="Fredoka One,cursive" font-size="16" fill="#5D4037">CAT (Kucing)</text></svg>`,
+  fish:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><ellipse cx="96" cy="100" rx="78" ry="48" fill="#42a5f5"/><ellipse cx="96" cy="100" rx="72" ry="42" fill="#64b5f6"/><path d="M22,82 Q4,100 22,118 L38,100Z" fill="#1565c0"/><ellipse cx="76" cy="86" rx="20" ry="14" fill="rgba(255,255,255,0.35)" transform="rotate(-25,76,86)"/><circle cx="130" cy="88" r="16" fill="white"/><circle cx="133" cy="90" r="10" fill="#333"><animate attributeName="cx" values="133;136;133;130;133" dur="3s" repeatCount="indefinite"/></circle><circle cx="136" cy="87" r="4" fill="white"/><path d="M96,58 Q120,48 144,58" stroke="rgba(255,255,255,0.5)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M96,72 Q120,62 144,72" stroke="rgba(255,255,255,0.4)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M96,128 Q120,138 144,128" stroke="rgba(255,255,255,0.4)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M96,142 Q120,152 144,142" stroke="rgba(255,255,255,0.3)" stroke-width="2.5" fill="none" stroke-linecap="round"/><ellipse cx="155" cy="100" rx="8" ry="5" fill="#ff8a80" opacity=".5"/><text x="100" y="168" text-anchor="middle" font-family="Fredoka One,cursive" font-size="16" fill="#0D47A1">FISH (Ikan)</text></svg>`,
+  bird:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><ellipse cx="100" cy="188" rx="35" ry="8" fill="rgba(0,0,0,0.15)"/><ellipse cx="110" cy="135" rx="58" ry="48" fill="#42a5f5"/><circle cx="130" cy="80" r="52" fill="#42a5f5"/><path d="M82,80 Q38,50 30,85 Q38,115 80,95" fill="#64b5f6"/><path d="M82,80 Q42,55 28,78" stroke="#1565c0" stroke-width="3" fill="none"/><circle cx="145" cy="65" r="16" fill="white"/><circle cx="148" cy="67" r="10" fill="#333"/><circle cx="151" cy="63" r="4" fill="white"/><path d="M158,80 L178,75 L178,88 Z" fill="#ff8f00"/><path d="M158,77 Q172,72 178,75" stroke="#e65100" stroke-width="3" fill="none"/><ellipse cx="122" cy="98" rx="12" ry="7" fill="#ff8a80" opacity=".4"/><path d="M88,178 Q76,190 64,178" fill="#ff8f00"/><path d="M118,178 Q106,190 94,178" fill="#ff8f00"/><line x1="100" y1="52" x2="115" y2="28" stroke="#42a5f5" stroke-width="6" stroke-linecap="round"/><circle cx="115" cy="24" r="8" fill="#42a5f5"/><text x="100" y="198" text-anchor="middle" font-family="Fredoka One,cursive" font-size="16" fill="#0D47A1">BIRD (Burung)</text></svg>`,
+  frog:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><ellipse cx="100" cy="188" rx="58" ry="10" fill="rgba(0,0,0,0.18)"/><ellipse cx="100" cy="130" rx="72" ry="58" fill="#66bb6a"/><ellipse cx="62" cy="52" rx="32" ry="32" fill="#66bb6a"/><ellipse cx="138" cy="52" rx="32" ry="32" fill="#66bb6a"/><circle cx="62" cy="52" r="22" fill="white"/><circle cx="138" cy="52" r="22" fill="white"/><circle cx="65" cy="55" r="14" fill="#333"><animate attributeName="cx" values="65;68;65;62;65" dur="3.5s" repeatCount="indefinite"/></circle><circle cx="141" cy="55" r="14" fill="#333"><animate attributeName="cx" values="141;144;141;138;141" dur="3.5s" repeatCount="indefinite"/></circle><circle cx="68" cy="50" r="5" fill="white"/><circle cx="144" cy="50" r="5" fill="white"/><ellipse cx="100" cy="148" rx="42" ry="22" fill="#81c784"/><path d="M68,148 Q100,170 132,148" fill="none" stroke="#388e3c" stroke-width="3" stroke-linecap="round"/><ellipse cx="100" cy="105" rx="28" ry="18" fill="#81c784"/><ellipse cx="86" cy="106" rx="9" ry="7" fill="#388e3c" opacity=".4"/><ellipse cx="114" cy="106" rx="9" ry="7" fill="#388e3c" opacity=".4"/><text x="100" y="200" text-anchor="middle" font-family="Fredoka One,cursive" font-size="16" fill="#1B5E20">FROG (Katak)</text></svg>`,
+  cow:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><ellipse cx="100" cy="188" rx="68" ry="10" fill="rgba(0,0,0,0.15)"/><ellipse cx="100" cy="138" rx="80" ry="58" fill="#fafafa"/><ellipse cx="80" cy="118" rx="24" ry="18" fill="#333" transform="rotate(-15,80,118)"/><ellipse cx="136" cy="142" rx="18" ry="24" fill="#333" transform="rotate(10,136,142)"/><ellipse cx="110" cy="158" rx="15" ry="12" fill="#333"/><circle cx="100" cy="76" r="62" fill="#fafafa"/><ellipse cx="107" cy="60" rx="20" ry="15" fill="#333" transform="rotate(10,107,60)"/><ellipse cx="66" cy="60" rx="20" ry="14" fill="#ffccbc" transform="rotate(-28,66,60)"/><ellipse cx="66" cy="60" rx="11" ry="8" fill="#ef9a9a" transform="rotate(-28,66,60)"/><ellipse cx="154" cy="60" rx="20" ry="14" fill="#ffccbc" transform="rotate(28,154,60)"/><ellipse cx="154" cy="60" rx="11" ry="8" fill="#ef9a9a" transform="rotate(28,154,60)"/><path d="M72,42 Q64,18 80,24" stroke="#f9a825" stroke-width="9" fill="none" stroke-linecap="round"/><path d="M148,42 Q156,18 140,24" stroke="#f9a825" stroke-width="9" fill="none" stroke-linecap="round"/><circle cx="80" cy="74" r="14" fill="white" stroke="#ccc" stroke-width="2"/><circle cx="120" cy="74" r="14" fill="white" stroke="#ccc" stroke-width="2"/><circle cx="82" cy="76" r="9" fill="#333"><animate attributeName="ry" values="9;3;9" dur="3.5s" repeatCount="indefinite"/></circle><circle cx="122" cy="76" r="9" fill="#333"><animate attributeName="ry" values="9;3;9" dur="3.5s" repeatCount="indefinite"/></circle><circle cx="85" cy="71" r="3.5" fill="white"/><circle cx="125" cy="71" r="3.5" fill="white"/><ellipse cx="100" cy="102" rx="30" ry="22" fill="#ffccbc"/><ellipse cx="87" cy="103" rx="10" ry="8" fill="#e8a090"/><ellipse cx="113" cy="103" rx="10" ry="8" fill="#e8a090"/><text x="100" y="198" text-anchor="middle" font-family="Fredoka One,cursive" font-size="16" fill="#5D4037">COW (Sapi)</text></svg>`
+};
+
+// Colors SVG
+const ENG_SVGS_COLORS={
+  col_red:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="90" r="75" fill="#e53935"/><ellipse cx="74" cy="64" rx="22" ry="14" fill="rgba(255,255,255,0.35)" transform="rotate(-30,74,64)"/><text x="100" y="185" text-anchor="middle" font-family="Fredoka One,cursive" font-size="20" fill="#b71c1c">RED</text><text x="100" y="200" text-anchor="middle" font-family="Fredoka One,cursive" font-size="14" fill="#888">(Merah)</text></svg>`,
+  col_blue:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="90" r="75" fill="#1e88e5"/><ellipse cx="74" cy="64" rx="22" ry="14" fill="rgba(255,255,255,0.35)" transform="rotate(-30,74,64)"/><text x="100" y="185" text-anchor="middle" font-family="Fredoka One,cursive" font-size="20" fill="#0d47a1">BLUE</text><text x="100" y="200" text-anchor="middle" font-family="Fredoka One,cursive" font-size="14" fill="#888">(Biru)</text></svg>`,
+  col_green:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="90" r="75" fill="#43a047"/><ellipse cx="74" cy="64" rx="22" ry="14" fill="rgba(255,255,255,0.35)" transform="rotate(-30,74,64)"/><text x="100" y="185" text-anchor="middle" font-family="Fredoka One,cursive" font-size="20" fill="#1b5e20">GREEN</text><text x="100" y="200" text-anchor="middle" font-family="Fredoka One,cursive" font-size="14" fill="#888">(Hijau)</text></svg>`,
+  col_yellow:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="90" r="75" fill="#FFD600"/><ellipse cx="74" cy="64" rx="22" ry="14" fill="rgba(255,255,255,0.35)" transform="rotate(-30,74,64)"/><text x="100" y="185" text-anchor="middle" font-family="Fredoka One,cursive" font-size="20" fill="#e65100">YELLOW</text><text x="100" y="200" text-anchor="middle" font-family="Fredoka One,cursive" font-size="14" fill="#888">(Kuning)</text></svg>`,
+  col_orange:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="90" r="75" fill="#FF6D00"/><ellipse cx="74" cy="64" rx="22" ry="14" fill="rgba(255,255,255,0.35)" transform="rotate(-30,74,64)"/><text x="100" y="185" text-anchor="middle" font-family="Fredoka One,cursive" font-size="20" fill="#bf360c">ORANGE</text><text x="100" y="200" text-anchor="middle" font-family="Fredoka One,cursive" font-size="14" fill="#888">(Oranye)</text></svg>`,
+  col_purple:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="90" r="75" fill="#8e24aa"/><ellipse cx="74" cy="64" rx="22" ry="14" fill="rgba(255,255,255,0.35)" transform="rotate(-30,74,64)"/><text x="100" y="185" text-anchor="middle" font-family="Fredoka One,cursive" font-size="20" fill="#4a148c">PURPLE</text><text x="100" y="200" text-anchor="middle" font-family="Fredoka One,cursive" font-size="14" fill="#888">(Ungu)</text></svg>`,
+  col_pink:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="90" r="75" fill="#e91e8c"/><ellipse cx="74" cy="64" rx="22" ry="14" fill="rgba(255,255,255,0.35)" transform="rotate(-30,74,64)"/><text x="100" y="185" text-anchor="middle" font-family="Fredoka One,cursive" font-size="20" fill="#880e4f">PINK</text><text x="100" y="200" text-anchor="middle" font-family="Fredoka One,cursive" font-size="14" fill="#888">(Pink)</text></svg>`,
+  col_white:`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="90" r="75" fill="#f5f5f5" stroke="#ccc" stroke-width="4"/><ellipse cx="74" cy="64" rx="22" ry="14" fill="rgba(255,255,255,0.7)" transform="rotate(-30,74,64)"/><text x="100" y="185" text-anchor="middle" font-family="Fredoka One,cursive" font-size="20" fill="#555">WHITE</text><text x="100" y="200" text-anchor="middle" font-family="Fredoka One,cursive" font-size="14" fill="#888">(Putih)</text></svg>`
+};
+
+function engGetSVG(key){
+  if(ENG_SVGS[key]) return ENG_SVGS[key];
+  if(ENG_SVGS_EXTRA[key]) return ENG_SVGS_EXTRA[key];
+  if(ENG_SVGS_COLORS[key]) return ENG_SVGS_COLORS[key];
+  return '<svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="80" fill="#ccc"/></svg>';
+}
+
+/* ============================================================
+   ENG MODE — STATE & ENGINE
+============================================================ */
+const egs={
+  subMode:1, topic:null, words:[], idx:0,
+  m2Filled:[], m2Locked:false,
+  progress:JSON.parse(localStorage.getItem('sktk_eng_prog')||'{}')
+};
+const ENG_BUBBLE_COLS=['#e53935','#d81b60','#6a1b9a','#283593','#0d47a1','#00695c','#1b5e20','#e65100','#f57f17','#4e342e','#00838f','#8e24aa'];
+const ENG_PRAISES=['Luar Biasa!','Keren!','Hebat!','Mantap!','Pintar!','Yay!','Sempurna!'];
+
+function engOpenMode(){
+  ga();
+  stopFloatingEmojis();
+  startFloatingEmojis(['🇬🇧','📚','✏️','🌟','⭐','🎯','🎉','🌈']);
+  document.getElementById('gbg').style.background='linear-gradient(170deg,#0d1b4a 0%,#1a237e 45%,#3949ab 78%,#90caf9 100%)';
+  removeGroundDeco();
+  showScreen('s-eng-submode');
+}
+
+function engSelectSubMode(m){
+  playSelect();
+  egs.subMode=m;
+  engRenderTopics();
+  showScreen('s-eng-topic');
+}
+
+function engRenderTopics(){
+  const title=document.getElementById('eng-topic-title');
+  title.textContent=egs.subMode===1?'🔍 Find the Picture':'🫧 Letter Bubbles — Pilih Topik';
+  const grid=document.getElementById('eng-topic-grid');
+  grid.innerHTML='';
+  ENG_TOPICS.forEach(function(tp){
+    const stars=egs.progress[tp.key]||0;
+    const card=document.createElement('div');
+    card.className='eng-topic-card';
+    card.style.cssText='background:linear-gradient(145deg,'+tp.card[0]+','+tp.card[1]+','+tp.card[2]+')';
+    card.innerHTML='<div class="ch-shimmer"></div><div class="eng-card-icon">'+tp.emoji+'</div><div class="eng-card-name">'+tp.title+'</div><div class="eng-card-desc">'+tp.sub+'</div><div class="ch-stars">'+'⭐'.repeat(stars)+'☆'.repeat(3-stars)+'</div>';
+    card.addEventListener('click',function(){engStartTopic(tp);});
+    grid.appendChild(card);
+  });
+}
+
+function engStartTopic(tp){
+  playSelect();ga();
+  egs.topic=tp;
+  egs.words=engShuffle(tp.words.slice());
+  egs.idx=0;
+  stopFloatingEmojis();
+  startFloatingEmojis(tp.decors);
+  document.getElementById('gbg').style.background=tp.bg;
+  setTimeout(function(){
+    playChapterStart();
+    showScreen('s-eng-game');
+    engLoadWord(0);
+  },200);
+}
+
+function engLoadWord(idx){
+  if(idx>=egs.words.length){engTopicComplete();return;}
+  egs.idx=idx;
+  egs.m2Locked=false;
+  const w=egs.words[idx];
+  engRenderCounter();
+  if(egs.subMode===1) engBuildMode1(w);
+  else engBuildMode2(w);
+  setTimeout(function(){engSpeak();},700);
+}
+
+function engSpeak(){
+  if(!egs.topic||!egs.words[egs.idx])return;
+  try{
+    const u=new SpeechSynthesisUtterance(egs.words[egs.idx].en.toLowerCase());
+    u.lang='en-US';u.rate=0.85;u.pitch=1.1;
+    speechSynthesis.cancel();
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+
+function engRenderCounter(){
+  const wrap=document.getElementById('eng-counter-wrap');
+  wrap.innerHTML='';
+  const icon=document.createElement('span');
+  icon.textContent=egs.topic.emoji;icon.style.fontSize='32px';
+  wrap.appendChild(icon);
+  egs.words.forEach(function(_,i){
+    const d=document.createElement('span');
+    d.className='cdot'+(i<egs.idx?' done':'');
+    wrap.appendChild(d);
+  });
+}
+
+function engNextWord(){showScreen('s-eng-game');engLoadWord(egs.idx+1);}
+function backToEngTopics(){stopLetterLoop();engRenderTopics();showScreen('s-eng-topic');}
+
+/* —— MODE 1: FIND THE PICTURE —— */
+function engBuildMode1(w){
+  document.getElementById('eng-m1-wrap').style.display='flex';
+  document.getElementById('eng-m2-wrap').style.display='none';
+  document.getElementById('eng-m1-word').textContent=w.en;
+  document.getElementById('eng-m1-meaning').textContent='('+w.id+')';
+  const allW=egs.topic.words;
+  const others=allW.filter(function(v){return v.key!==w.key;});
+  const wrongs=engShuffle(others).slice(0,2);
+  const choices=engShuffle([w].concat(wrongs));
+  const grid=document.getElementById('eng-m1-choices');
+  grid.innerHTML='';
+  choices.forEach(function(ch){
+    const card=document.createElement('div');
+    card.className='eng-choice-card';
+    card.innerHTML=engGetSVG(ch.key)+'<div class="eng-choice-lbl">'+ch.id+'</div>';
+    card.addEventListener('click',function(){engOnChoiceClick(card,ch,w);});
+    grid.appendChild(card);
+  });
+}
+
+function engOnChoiceClick(card,choice,correct){
+  const allCards=document.querySelectorAll('.eng-choice-card');
+  allCards.forEach(function(c){c.style.pointerEvents='none';});
+  if(choice.key===correct.key){
+    card.classList.add('ec-correct');
+    playSuccess();
+    starBurst(card);
+    var wr=document.getElementById('gw').getBoundingClientRect(),sc=wr.width/1920;
+    for(var i=0;i<5;i++)setTimeout(function(){confetti(960+(Math.random()-.5)*700,400+(Math.random()-.5)*300,16);},i*120);
+    setTimeout(function(){engShowCelebration(correct);},900);
+  }else{
+    card.classList.add('ec-wrong');
+    playWrong();
+    setTimeout(function(){
+      card.classList.remove('ec-wrong');
+      allCards.forEach(function(c){c.style.pointerEvents='';});
+    },600);
+  }
+}
+
+/* —— MODE 2: LETTER BUBBLES (Click) —— */
+function engBuildMode2(w){
+  document.getElementById('eng-m1-wrap').style.display='none';
+  document.getElementById('eng-m2-wrap').style.display='flex';
+  egs.m2Filled=new Array(w.en.length).fill('');
+  egs.m2Locked=false;
+  // Image
+  document.getElementById('eng-m2-img').innerHTML=engGetSVG(w.key);
+  // Slots
+  const slotsWrap=document.getElementById('eng-m2-slots');
+  slotsWrap.innerHTML='';
+  const word=w.en;
+  const sz=word.length<=4?128:word.length<=6?108:92;
+  const fs=word.length<=4?80:word.length<=6?66:54;
+  for(var i=0;i<word.length;i++){
+    var box=document.createElement('div');
+    box.className='eng-lslot';
+    box.id='elbox_'+i;
+    box.style.width=sz+'px';
+    box.style.height=sz+'px';
+    box.style.fontSize=fs+'px';
+    slotsWrap.appendChild(box);
+  }
+  // Bubbles
+  const bRow=document.getElementById('eng-m2-bubbles');
+  bRow.innerHTML='';
+  const letters=engShuffle(word.split(''));
+  const bsz=word.length<=4?140:word.length<=6?120:100;
+  const bfs=word.length<=4?80:word.length<=6?68:56;
+  letters.forEach(function(ltr,idx){
+    const btn=document.createElement('button');
+    btn.className='eng-bubble';
+    btn.id='ebbl_'+idx;
+    btn.textContent=ltr;
+    const col=ENG_BUBBLE_COLS[idx%ENG_BUBBLE_COLS.length];
+    btn.style.background='radial-gradient(circle at 38% 32%,'+lighten(col,44)+','+col+')';
+    btn.style.width=bsz+'px';
+    btn.style.height=bsz+'px';
+    btn.style.fontSize=bfs+'px';
+    btn.style.animationDelay=(idx*0.25)+'s';
+    (function(l,b){btn.addEventListener('click',function(){engOnBubbleClick(b,l,word);});})(ltr,btn);
+    bRow.appendChild(btn);
+  });
+}
+
+function engOnBubbleClick(btn,ltr,word){
+  if(egs.m2Locked)return;
+  playPop();
+  var fillIdx=-1;
+  for(var i=0;i<egs.m2Filled.length;i++){if(egs.m2Filled[i]===''){fillIdx=i;break;}}
+  if(fillIdx===-1)return;
+  egs.m2Filled[fillIdx]=ltr;
+  var box=document.getElementById('elbox_'+fillIdx);
+  box.textContent=ltr;
+  box.classList.add('el-filled');
+  starBurst(box);
+  btn.classList.add('eb-used');
+  var allFilled=true;
+  for(var j=0;j<egs.m2Filled.length;j++){if(egs.m2Filled[j]===''){allFilled=false;break;}}
+  if(allFilled){
+    var typed=egs.m2Filled.join('');
+    if(typed===word){
+      egs.m2Locked=true;
+      playSuccess();
+      for(var k=0;k<5;k++)setTimeout(function(){confetti(960+(Math.random()-.5)*900,540+(Math.random()-.5)*440,20);},k*140);
+      setTimeout(function(){engShowCelebration(egs.words[egs.idx]);},900);
+    }else{
+      playWrong();
+      var slotsWrap=document.getElementById('eng-m2-slots');
+      slotsWrap.style.animation='shake .45s ease';
+      setTimeout(function(){
+        slotsWrap.style.animation='';
+        egs.m2Filled=new Array(egs.words[egs.idx].en.length).fill('');
+        for(var i=0;i<egs.words[egs.idx].en.length;i++){
+          var b=document.getElementById('elbox_'+i);
+          if(b){b.textContent='';b.classList.remove('el-filled');}
+        }
+        document.querySelectorAll('.eng-bubble').forEach(function(b){b.classList.remove('eb-used');});
+      },700);
+    }
+  }
+}
+
+/* —— CELEBRATION —— */
+function engShowCelebration(w){
+  const emojis=['🎉','🌟','🎊','🏅','🥳','💫','🎯','🎈'];
+  document.getElementById('eng-cel-emoji').textContent=emojis[~~(Math.random()*emojis.length)];
+  document.getElementById('eng-cel-word').textContent=w.en;
+  document.getElementById('eng-cel-meaning').textContent='= '+w.id;
+  // TTS celebrate
+  setTimeout(function(){
+    try{
+      var u=new SpeechSynthesisUtterance(w.en.toLowerCase());
+      u.lang='en-US';u.rate=0.82;u.pitch=1.15;
+      speechSynthesis.cancel();speechSynthesis.speak(u);
+    }catch(e){}
+  },400);
+  showScreen('s-eng-cel');
+}
+
+/* —— TOPIC COMPLETE —— */
+function engTopicComplete(){
+  egs.progress[egs.topic.key]=3;
+  localStorage.setItem('sktk_eng_prog',JSON.stringify(egs.progress));
+  playSuccess();
+  for(var i=0;i<8;i++)setTimeout(function(){confetti(960+(Math.random()-.5)*1400,540+(Math.random()-.5)*700,28);},i*180);
+  document.getElementById('chend-title').textContent='🌟 Topic Selesai!';
+  document.getElementById('chend-msg').textContent='Topic "'+egs.topic.title+'" selesai! Hebat sekali!';
+  var starsEl=document.getElementById('chend-stars');starsEl.innerHTML='';
+  for(var i=0;i<3;i++){
+    var s=document.createElement('span');s.textContent='⭐';s.className='chs';
+    s.style.animationDelay=(i*0.3)+'s';starsEl.appendChild(s);
+  }
+  // Override chapter select button to go back to eng topic
+  var btn=document.querySelector('#s-chend .btn-main');
+  btn.onclick=function(){showScreen('s-eng-topic');btn.onclick=function(){showChapters();};};
+  setTimeout(function(){showScreen('s-chend');},600);
+}
+
+/* —— ENG SHUFFLE —— */
+function engShuffle(a){
+  for(var i=a.length-1;i>0;i--){
+    var j=~~(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t;
+  }
+  return a;
+}
+
 /* BUBBLE COLORS */
 const BCOLS=['#e53935','#d81b60','#6a1b9a','#283593','#0d47a1','#00695c','#1b5e20','#e65100','#e64a00','#f57f17','#4e342e','#37474f'];
 
@@ -1073,8 +1578,10 @@ function renderChapterScreen(){
   grid.innerHTML='';
   // Row 1: ch1, ch2, ch3
   // Row 2: ch4, ch5
+  // Row 3: Eng mode (special)
   const row1=document.createElement('div');row1.className='chapters-row';
   const row2=document.createElement('div');row2.className='chapters-row';
+  const row3=document.createElement('div');row3.className='chapters-row';
   CHAPTERS.forEach((ch,i)=>{
     const card=makeChapterCard(ch,i);
     if(i<3){
@@ -1085,10 +1592,27 @@ function renderChapterScreen(){
       row2.appendChild(card);
     }
   });
+  // English mode card
+  const engCard=document.createElement('div');
+  engCard.className='eng-chapter-card';
+  const engStars=Object.values(egs.progress).reduce((a,b)=>a+b,0);
+  const engMaxStars=ENG_TOPICS.length*3;
+  engCard.innerHTML=`
+    <div class="ch-shimmer"></div>
+    <div class="ch-icon" style="font-size:100px;">🇬🇧</div>
+    <div class="ch-name" style="font-size:46px;">Bahasa Inggris</div>
+    <div class="ch-sub">3 Topik Kosakata</div>
+    <div class="ch-stars">${'⭐'.repeat(Math.min(engStars,3))}${'☆'.repeat(Math.max(0,3-engStars))}</div>
+  `;
+  engCard.onclick=engOpenMode;
+  row3.appendChild(engCard);
   const midCon=document.createElement('div');midCon.style.cssText='display:flex;justify-content:flex-end;padding-right:380px;';
   const downArr=document.createElement('span');downArr.className='ch-connector down';downArr.textContent='↙';
   midCon.appendChild(downArr);
-  grid.appendChild(row1);grid.appendChild(midCon);grid.appendChild(row2);
+  const midCon2=document.createElement('div');midCon2.style.cssText='display:flex;justify-content:flex-start;padding-left:380px;';
+  const downArr2=document.createElement('span');downArr2.className='ch-connector down';downArr2.textContent='↙';
+  midCon2.appendChild(downArr2);
+  grid.appendChild(row1);grid.appendChild(midCon);grid.appendChild(row2);grid.appendChild(midCon2);grid.appendChild(row3);
 }
 
 function makeChapterCard(ch,idx){
