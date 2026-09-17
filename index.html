@@ -45,27 +45,27 @@ html,body{width:100%;height:100%;overflow:hidden;background:#09143c;display:flex
 .btn-main{font-family:var(--fg);font-size:68px;padding:28px 88px;border:none;border-radius:100px;background:linear-gradient(145deg,#FFD600,#FF6D00);color:#fff;text-shadow:3px 3px 6px rgba(0,0,0,0.4);box-shadow:0 16px 48px rgba(255,109,0,0.5),0 5px 0 #c43e00,inset 0 2px 8px rgba(255,255,255,0.3);cursor:pointer;transition:transform 0.12s,box-shadow 0.12s;animation:pulseBtn 2s ease-in-out infinite;}
 .btn-main:active{transform:translateY(6px);box-shadow:0 8px 24px rgba(255,109,0,0.5),0 0 0 #c43e00;}
 
-/* CHAPTER SELECT (Optimized 2-Row 16:9 Grid) */
-#s-chapters{z-index:12;gap:0;padding:24px 40px 30px;overflow:hidden;justify-content:center;}
-.chapters-title{font-family:var(--fg);font-size:72px;color:#FFD600;text-shadow:5px 5px 0 #e65100,10px 10px 0 rgba(0,0,0,0.3);margin-bottom:28px;animation:tBounce 1.5s ease-in-out infinite alternate;letter-spacing:4px;text-align:center;}
-.chapters-grid{display:flex;flex-direction:column;align-items:center;gap:24px;}
-.chapters-row{display:flex;align-items:center;justify-content:center;gap:32px;}
-.ch-connector{font-size:52px;color:rgba(255,255,255,0.75);animation:connPulse 1.5s ease-in-out infinite alternate;pointer-events:none;}
+/* CHAPTER SELECT — Compact 2×3 Grid for 16:9 */
+#s-chapters{z-index:12;gap:0;padding:18px 40px 20px;overflow:hidden;justify-content:center;}
+.chapters-title{font-family:var(--fg);font-size:62px;color:#FFD600;text-shadow:4px 4px 0 #e65100,8px 8px 0 rgba(0,0,0,0.3);margin-bottom:20px;animation:tBounce 1.5s ease-in-out infinite alternate;letter-spacing:3px;text-align:center;line-height:1;}
+.chapters-grid{display:flex;flex-direction:column;align-items:center;gap:18px;}
+.chapters-row{display:flex;align-items:center;justify-content:center;gap:28px;}
+.ch-connector{font-size:44px;color:rgba(255,255,255,0.75);animation:connPulse 1.5s ease-in-out infinite alternate;pointer-events:none;line-height:1;}
 .chapter-card{
-  width:320px;height:310px;border-radius:32px;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:12px;cursor:pointer;position:relative;
-  overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,0.45),0 5px 0 rgba(0,0,0,0.3);
+  width:300px;height:270px;border-radius:28px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:10px;cursor:pointer;position:relative;
+  overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,0.45),0 4px 0 rgba(0,0,0,0.3);
   transition:transform 0.18s,box-shadow 0.18s,border-color 0.18s;border:4px solid rgba(255,255,255,0.28);
 }
-.chapter-card:hover,.chapter-card:focus-visible{transform:translateY(-8px) scale(1.04);box-shadow:0 28px 70px rgba(0,0,0,0.5),0 0 30px rgba(255,214,0,0.6);border-color:#FFD600;outline:none;}
-.chapter-card:active{transform:scale(0.96);box-shadow:0 10px 30px rgba(0,0,0,0.4);}
+.chapter-card:hover,.chapter-card:focus-visible{transform:translateY(-6px) scale(1.04);box-shadow:0 24px 60px rgba(0,0,0,0.5),0 0 28px rgba(255,214,0,0.6);border-color:#FFD600;outline:none;}
+.chapter-card:active{transform:scale(0.96);box-shadow:0 8px 24px rgba(0,0,0,0.4);}
 .chapter-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.18) 0%,transparent 50%,rgba(0,0,0,0.1) 100%);pointer-events:none;}
 .ch-shimmer{position:absolute;top:-50%;left:-100%;width:60%;height:200%;background:linear-gradient(105deg,transparent,rgba(255,255,255,0.28),transparent);animation:shimmer 3.5s ease-in-out infinite;pointer-events:none;}
-.ch-num{position:absolute;top:12px;right:14px;width:48px;height:48px;border-radius:50%;background:rgba(0,0,0,0.3);border:3px solid rgba(255,255,255,0.45);display:flex;align-items:center;justify-content:center;font-family:var(--fg);font-size:26px;color:#fff;}
-.ch-icon{font-size:96px;line-height:1;filter:drop-shadow(4px 6px 10px rgba(0,0,0,0.35));animation:iconRock 2.2s ease-in-out infinite alternate;}
-.ch-name{font-family:var(--fg);font-size:46px;color:#fff;text-shadow:3px 3px 8px rgba(0,0,0,0.4);}
-.ch-sub{font-size:22px;color:rgba(255,255,255,0.85);font-weight:700;text-align:center;padding:0 14px;}
-.ch-stars{display:flex;gap:6px;font-size:28px;filter:drop-shadow(2px 2px 4px rgba(0,0,0,0.4));}
+.ch-num{position:absolute;top:10px;right:12px;width:42px;height:42px;border-radius:50%;background:rgba(0,0,0,0.32);border:3px solid rgba(255,255,255,0.45);display:flex;align-items:center;justify-content:center;font-family:var(--fg);font-size:22px;color:#fff;}
+.ch-icon{font-size:82px;line-height:1;filter:drop-shadow(3px 5px 8px rgba(0,0,0,0.35));animation:iconRock 2.2s ease-in-out infinite alternate;}
+.ch-name{font-family:var(--fg);font-size:40px;color:#fff;text-shadow:3px 3px 6px rgba(0,0,0,0.4);line-height:1;}
+.ch-sub{font-size:19px;color:rgba(255,255,255,0.88);font-weight:700;text-align:center;padding:0 12px;line-height:1.3;}
+.ch-stars{display:flex;gap:5px;font-size:24px;filter:drop-shadow(2px 2px 4px rgba(0,0,0,0.4));}
 
 /* GAME */
 #s-game{flex-direction:column;gap:0;z-index:5;padding:32px 52px;}
@@ -171,9 +171,9 @@ html,body{width:100%;height:100%;overflow:hidden;background:#09143c;display:flex
 .eng-card-name{font-family:var(--fg);font-size:52px;color:#fff;text-shadow:3px 3px 8px rgba(0,0,0,0.5);text-align:center;}
 .eng-card-desc{font-size:26px;color:rgba(255,255,255,0.88);font-weight:700;text-align:center;line-height:1.4;}
 .eng-chapter-card{
-  width:320px;height:310px;border-radius:32px;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:12px;cursor:pointer;position:relative;
-  overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,0.45),0 5px 0 rgba(0,0,0,0.3);
+  width:300px;height:270px;border-radius:28px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:10px;cursor:pointer;position:relative;
+  overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,0.45),0 4px 0 rgba(0,0,0,0.3);
   transition:transform 0.18s,box-shadow 0.18s,border-color 0.18s;border:4px solid #FFD600;
   background:linear-gradient(145deg,#0d1b4a,#1a237e,#283593);
 }
@@ -1938,26 +1938,13 @@ function scl(){
   if(!W) return;
   const vw = window.innerWidth;
   const vh = window.innerHeight;
-  const ratio = vw / vh;
-  
-  // Smart TV 16:9 full screen scaling:
-  // Most TVs and widescreen displays have an aspect ratio between 1.35 and 2.2.
-  // Using scale(sx, sy) ensures the entire 16:9 canvas spans edge-to-edge with 100% fill and ZERO black bars!
-  if (ratio >= 1.35 && ratio <= 2.2) {
-    const sx = vw / 1920;
-    const sy = vh / 1080;
-    W.style.transform = `scale(${sx}, ${sy})`;
-    W.style.transformOrigin = 'top left';
-    W.style.left = '0px';
-    W.style.top = '0px';
-  } else {
-    // Extreme aspect ratio (e.g. mobile portrait): scale uniformly with center alignment
-    const sc = Math.min(vw / 1920, vh / 1080);
-    W.style.transform = `scale(${sc})`;
-    W.style.transformOrigin = 'top left';
-    W.style.left = `${(vw - 1920 * sc) / 2}px`;
-    W.style.top = `${(vh - 1080 * sc) / 2}px`;
-  }
+  // ALWAYS fill edge-to-edge with independent X/Y scaling.
+  // On a true 16:9 display (Smart TV, widescreen monitor) this is pixel-perfect.
+  // On non-16:9 displays there will be a tiny stretch — acceptable for a kids' game.
+  W.style.transform = `scale(${vw/1920}, ${vh/1080})`;
+  W.style.transformOrigin = 'top left';
+  W.style.left = '0px';
+  W.style.top = '0px';
 }
 window.addEventListener('resize', scl);
 window.addEventListener('orientationchange', ()=>setTimeout(scl, 150));
@@ -2053,9 +2040,17 @@ function renderChapterScreen(){
   engCard.innerHTML=`
     <div class="ch-shimmer"></div>
     <div class="ch-badge-new">✨ BARU!</div>
-    <div class="ch-icon" style="font-size:90px;">🇬🇧</div>
-    <div class="ch-name" style="font-size:38px;color:#FFD600;">Bahasa Inggris</div>
-    <div class="ch-sub">Flashcard Pintar & Bubbles</div>
+    <div class="ch-icon" style="font-size:80px;width:90px;height:90px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,0.4);">
+      <svg viewBox="0 0 60 40" width="90" height="60" xmlns="http://www.w3.org/2000/svg">
+        <rect width="60" height="40" fill="#012169"/>
+        <path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/>
+        <path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="5"/>
+        <path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="13"/>
+        <path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="8"/>
+      </svg>
+    </div>
+    <div class="ch-name" style="font-size:34px;color:#FFD600;">Bahasa Inggris</div>
+    <div class="ch-sub">Flashcard Pintar &amp; Bubbles</div>
     <div class="ch-stars">${'⭐'.repeat(Math.min(engStars,3))}${'☆'.repeat(Math.max(0,3-engStars))}</div>
   `;
   engCard.onclick=engOpenMode;
