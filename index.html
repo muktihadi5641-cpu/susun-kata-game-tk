@@ -23,13 +23,40 @@ html,body{width:100%;height:100%;overflow:hidden;background:#09143c;display:flex
 
 /* SMART TV TOP CONTROLS */
 #tv-top-bar{position:absolute;top:24px;right:36px;z-index:9999;display:flex;gap:12px;align-items:center;}
-#btn-global-fs{
-  font-family:var(--fg);font-size:24px;background:rgba(0,0,0,0.52);border:3px solid rgba(255,255,255,0.42);
-  color:#FFD600;padding:12px 28px;border-radius:50px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,0.35);
-  transition:transform 0.15s,background 0.15s,border-color 0.15s,box-shadow 0.15s;display:flex;align-items:center;gap:10px;backdrop-filter:blur(8px);
+.tv-ctrl-btn{
+  font-family:var(--fg);font-size:24px;background:rgba(0,0,0,0.58);border:3px solid rgba(255,255,255,0.38);
+  color:#FFD600;padding:14px 30px;border-radius:50px;cursor:pointer;box-shadow:0 8px 28px rgba(0,0,0,0.4);
+  transition:transform 0.15s,background 0.15s,border-color 0.15s,box-shadow 0.15s;
+  display:flex;align-items:center;gap:10px;backdrop-filter:blur(12px);white-space:nowrap;
 }
-#btn-global-fs:hover,#btn-global-fs:focus-visible{background:rgba(255,214,0,0.32);border-color:#FFD600;transform:scale(1.06);outline:none;box-shadow:0 0 28px rgba(255,214,0,0.6);}
-#btn-global-fs:active{transform:scale(0.95);}
+.tv-ctrl-btn:hover,.tv-ctrl-btn:focus-visible{background:rgba(255,214,0,0.28);border-color:#FFD600;transform:scale(1.07);outline:none;box-shadow:0 0 30px rgba(255,214,0,0.55);}
+.tv-ctrl-btn:active{transform:scale(0.94);}
+#btn-global-menu{color:#fff;border-color:rgba(255,255,255,0.45);}
+#btn-global-menu:hover,#btn-global-menu:focus-visible{background:rgba(255,100,100,0.32);border-color:#ff6b6b;box-shadow:0 0 30px rgba(255,100,100,0.5);}
+/* confirm popup */
+#menu-confirm{
+  position:absolute;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,0.72);backdrop-filter:blur(8px);
+  opacity:0;pointer-events:none;transition:opacity 0.25s;
+}
+#menu-confirm.show{opacity:1;pointer-events:all;}
+#menu-confirm-box{
+  background:linear-gradient(145deg,#1a1a5e,#1565c0);
+  border:4px solid #FFD600;border-radius:40px;padding:60px 80px;
+  display:flex;flex-direction:column;align-items:center;gap:36px;
+  box-shadow:0 40px 100px rgba(0,0,0,0.6),0 0 60px rgba(255,214,0,0.3);
+  animation:sPop 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+#menu-confirm-box p{font-family:var(--fg);font-size:68px;color:#fff;text-shadow:3px 3px 8px rgba(0,0,0,0.5);text-align:center;line-height:1.2;}
+.mc-row{display:flex;gap:28px;}
+.mc-btn{
+  font-family:var(--fg);font-size:52px;padding:22px 70px;border:none;border-radius:80px;
+  cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;box-shadow:0 12px 36px rgba(0,0,0,0.4);
+}
+#mc-yes{background:linear-gradient(145deg,#e53935,#b71c1c);color:#fff;text-shadow:2px 2px 6px rgba(0,0,0,0.4);}
+#mc-yes:hover{transform:scale(1.07);box-shadow:0 0 30px rgba(229,57,53,0.7);}
+#mc-no{background:linear-gradient(145deg,#66bb6a,#2e7d32);color:#fff;text-shadow:2px 2px 6px rgba(0,0,0,0.4);}
+#mc-no:hover{transform:scale(1.07);box-shadow:0 0 30px rgba(102,187,106,0.7);}
 
 /* SCREENS */
 .screen{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s ease,transform 0.5s ease;}
@@ -287,7 +314,19 @@ html,body{width:100%;height:100%;overflow:hidden;background:#09143c;display:flex
 <div id="gw">
   <!-- PERSISTENT SMART TV CONTROLS -->
   <div id="tv-top-bar">
-    <button id="btn-global-fs" onclick="toggleFS()" title="Layar Penuh 16:9 (Smart TV)">⛶ Layar Penuh</button>
+    <button id="btn-global-menu" class="tv-ctrl-btn" onclick="showMenuConfirm()" title="Kembali ke Menu Utama" style="display:none;">&#127968; Menu</button>
+    <button id="btn-global-fs" class="tv-ctrl-btn" onclick="toggleFS()" title="Layar Penuh 16:9 (Smart TV)">⛶ Layar Penuh</button>
+  </div>
+
+  <!-- CONFIRM BACK TO MENU POPUP -->
+  <div id="menu-confirm">
+    <div id="menu-confirm-box">
+      <p>&#127968; Kembali ke<br>Menu Utama?</p>
+      <div class="mc-row">
+        <button class="mc-btn" id="mc-yes" onclick="confirmGoMenu()">Ya &#128522;</button>
+        <button class="mc-btn" id="mc-no" onclick="hideMenuConfirm()">Lanjut &#127918;</button>
+      </div>
+    </div>
   </div>
 
 <!-- TITLE -->
@@ -1576,6 +1615,9 @@ document.addEventListener('keydown', function(e){
 
   // TV Remote Back / Return button (KeyCode 10009 on Samsung Tizen, 461 on LG webOS)
   if(e.key==='Escape' || e.key==='Backspace' || e.keyCode===10009 || e.keyCode===461){
+    // If menu confirm popup is open, close it first
+    const pop=document.getElementById('menu-confirm');
+    if(pop && pop.classList.contains('show')){ hideMenuConfirm(); e.preventDefault(); return; }
     if(sId==='s-eng-game'){ backToEngTopics(); e.preventDefault(); return; }
     if(sId==='s-eng-topic'){ showScreen('s-eng-submode'); e.preventDefault(); return; }
     if(sId==='s-eng-submode'){ showChapters(); e.preventDefault(); return; }
@@ -1994,9 +2036,34 @@ const GROUND_SVGS={
 /* ============================================================
    SCREEN MANAGEMENT
 ============================================================ */
+// Screens where the back-to-menu button should be visible
+const MENU_BTN_SCREENS = new Set(['s-game','s-eng-submode','s-eng-topic','s-eng-game','s-eng-cel','s-success','s-chend','s-finish']);
+
 function showScreen(id){
   document.querySelectorAll('.screen').forEach(s=>{s.classList.remove('visible');s.classList.add('hidden');});
   const el=document.getElementById(id);if(el){el.classList.remove('hidden');el.classList.add('visible');}
+  // Show/hide global menu button based on active screen
+  const menuBtn = document.getElementById('btn-global-menu');
+  if(menuBtn) menuBtn.style.display = MENU_BTN_SCREENS.has(id) ? 'flex' : 'none';
+}
+
+/* MENU CONFIRM POPUP */
+function showMenuConfirm(){
+  const pop = document.getElementById('menu-confirm');
+  if(pop) pop.classList.add('show');
+}
+function hideMenuConfirm(){
+  const pop = document.getElementById('menu-confirm');
+  if(pop) pop.classList.remove('show');
+}
+function confirmGoMenu(){
+  hideMenuConfirm();
+  // Stop any audio or ongoing animations
+  if(window.speechSynthesis) window.speechSynthesis.cancel();
+  if(window.engAudioCtx) try{ window.engAudioCtx.close(); window.engAudioCtx = null; }catch(e){}
+  stopFloatingEmojis();
+  // Go back to chapter selection (not title)
+  showChapters();
 }
 
 /* ============================================================
