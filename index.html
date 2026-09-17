@@ -2037,22 +2037,28 @@ function renderChapterScreen(){
   engCard.className='eng-chapter-card';
   engCard.tabIndex=0;
   const engStars=Object.values(egs.progress).reduce((a,b)=>a+b,0);
-  engCard.innerHTML=`
-    <div class="ch-shimmer"></div>
-    <div class="ch-badge-new">✨ BARU!</div>
-    <div class="ch-icon" style="font-size:80px;width:90px;height:90px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,0.4);">
-      <svg viewBox="0 0 60 40" width="90" height="60" xmlns="http://www.w3.org/2000/svg">
-        <rect width="60" height="40" fill="#012169"/>
-        <path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/>
-        <path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="5"/>
-        <path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="13"/>
-        <path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="8"/>
-      </svg>
-    </div>
-    <div class="ch-name" style="font-size:34px;color:#FFD600;">Bahasa Inggris</div>
-    <div class="ch-sub">Flashcard Pintar &amp; Bubbles</div>
-    <div class="ch-stars">${'⭐'.repeat(Math.min(engStars,3))}${'☆'.repeat(Math.max(0,3-engStars))}</div>
-  `;
+  // Build English card programmatically (SVG flag inline)
+  const shimmer = document.createElement('div'); shimmer.className = 'ch-shimmer';
+  const badge = document.createElement('div'); badge.className = 'ch-badge-new'; badge.textContent = '✨ BARU!';
+  
+  const flagWrap = document.createElement('div');
+  flagWrap.style.cssText = 'width:100px;height:66px;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,0.5);border:2px solid rgba(255,255,255,0.4);margin-bottom:4px;';
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(svgNS, 'svg');
+  svg.setAttribute('viewBox', '0 0 60 40'); svg.setAttribute('width', '100'); svg.setAttribute('height', '66');
+  const bg = document.createElementNS(svgNS, 'rect'); bg.setAttribute('width','60'); bg.setAttribute('height','40'); bg.setAttribute('fill','#012169');
+  const d1 = document.createElementNS(svgNS, 'path'); d1.setAttribute('d','M0,0 L60,40 M60,0 L0,40'); d1.setAttribute('stroke','#fff'); d1.setAttribute('stroke-width','8');
+  const d2 = document.createElementNS(svgNS, 'path'); d2.setAttribute('d','M0,0 L60,40 M60,0 L0,40'); d2.setAttribute('stroke','#C8102E'); d2.setAttribute('stroke-width','5');
+  const d3 = document.createElementNS(svgNS, 'path'); d3.setAttribute('d','M30,0 V40 M0,20 H60'); d3.setAttribute('stroke','#fff'); d3.setAttribute('stroke-width','13');
+  const d4 = document.createElementNS(svgNS, 'path'); d4.setAttribute('d','M30,0 V40 M0,20 H60'); d4.setAttribute('stroke','#C8102E'); d4.setAttribute('stroke-width','8');
+  [bg,d1,d2,d3,d4].forEach(el=>svg.appendChild(el));
+  flagWrap.appendChild(svg);
+  
+  const nameEl = document.createElement('div'); nameEl.className = 'ch-name'; nameEl.style.cssText = 'font-size:34px;color:#FFD600;'; nameEl.textContent = 'Bahasa Inggris';
+  const subEl = document.createElement('div'); subEl.className = 'ch-sub'; subEl.textContent = 'Flashcard Pintar & Bubbles';
+  const starsEl = document.createElement('div'); starsEl.className = 'ch-stars'; starsEl.textContent = '⭐'.repeat(Math.min(engStars,3)) + '☆'.repeat(Math.max(0,3-engStars));
+  
+  [shimmer, badge, flagWrap, nameEl, subEl, starsEl].forEach(el => engCard.appendChild(el));
   engCard.onclick=engOpenMode;
   engCard.addEventListener('focus',function(){if(window.engPlayCardFocus) engPlayCardFocus();});
   row2.appendChild(engCard);
