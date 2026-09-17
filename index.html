@@ -10,9 +10,9 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--fg:'Fredoka One',cursive;--fu:'Nunito',sans-serif;}
-html,body{width:100%;height:100%;overflow:hidden;background:#05051a;display:flex;align-items:center;justify-content:center;font-family:var(--fu);touch-action:none;user-select:none;-webkit-user-select:none;}
-#gw{position:absolute;width:1920px;height:1080px;transform-origin:top left;overflow:hidden;}
-#gbg{position:absolute;inset:0;background:linear-gradient(170deg,#1a1a6e 0%,#1565c0 45%,#42a5f5 78%,#90caf9 100%);transition:background 1.2s ease;}
+html,body{width:100%;height:100%;overflow:hidden;background:#09143c;display:flex;align-items:center;justify-content:center;font-family:var(--fu);touch-action:none;user-select:none;-webkit-user-select:none;}
+#gw{position:absolute;width:1920px;height:1080px;transform-origin:top left;overflow:hidden;z-index:2;}
+#gbg{position:fixed;inset:0;width:100vw;height:100vh;background:linear-gradient(170deg,#1a1a6e 0%,#1565c0 45%,#42a5f5 78%,#90caf9 100%);transition:background 1.2s ease;pointer-events:none;z-index:0;overflow:hidden;}
 .cloud{position:absolute;background:rgba(255,255,255,0.82);border-radius:60px;animation:cloudDrift linear infinite;pointer-events:none;box-shadow:0 4px 20px rgba(255,255,255,0.3);}
 .cloud::before,.cloud::after{content:'';position:absolute;background:inherit;border-radius:50%;}
 .cloud::before{width:58%;height:145%;top:-42%;left:12%}
@@ -20,6 +20,16 @@ html,body{width:100%;height:100%;overflow:hidden;background:#05051a;display:flex
 .sdot{position:absolute;border-radius:50%;background:#fff;animation:twinkle ease-in-out infinite;pointer-events:none;}
 .floatEmoji{position:absolute;font-size:52px;animation:floatEmoji linear infinite;pointer-events:none;user-select:none;opacity:0.55;}
 .ground-deco{position:absolute;bottom:0;left:0;width:100%;pointer-events:none;z-index:1;}
+
+/* SMART TV TOP CONTROLS */
+#tv-top-bar{position:absolute;top:24px;right:36px;z-index:9999;display:flex;gap:12px;align-items:center;}
+#btn-global-fs{
+  font-family:var(--fg);font-size:24px;background:rgba(0,0,0,0.52);border:3px solid rgba(255,255,255,0.42);
+  color:#FFD600;padding:12px 28px;border-radius:50px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,0.35);
+  transition:transform 0.15s,background 0.15s,border-color 0.15s,box-shadow 0.15s;display:flex;align-items:center;gap:10px;backdrop-filter:blur(8px);
+}
+#btn-global-fs:hover,#btn-global-fs:focus-visible{background:rgba(255,214,0,0.32);border-color:#FFD600;transform:scale(1.06);outline:none;box-shadow:0 0 28px rgba(255,214,0,0.6);}
+#btn-global-fs:active{transform:scale(0.95);}
 
 /* SCREENS */
 .screen{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s ease,transform 0.5s ease;}
@@ -35,28 +45,27 @@ html,body{width:100%;height:100%;overflow:hidden;background:#05051a;display:flex
 .btn-main{font-family:var(--fg);font-size:68px;padding:28px 88px;border:none;border-radius:100px;background:linear-gradient(145deg,#FFD600,#FF6D00);color:#fff;text-shadow:3px 3px 6px rgba(0,0,0,0.4);box-shadow:0 16px 48px rgba(255,109,0,0.5),0 5px 0 #c43e00,inset 0 2px 8px rgba(255,255,255,0.3);cursor:pointer;transition:transform 0.12s,box-shadow 0.12s;animation:pulseBtn 2s ease-in-out infinite;}
 .btn-main:active{transform:translateY(6px);box-shadow:0 8px 24px rgba(255,109,0,0.5),0 0 0 #c43e00;}
 
-/* CHAPTER SELECT */
-#s-chapters{z-index:12;gap:0;padding:30px 40px 50px;overflow:hidden;}
-.chapters-title{font-family:var(--fg);font-size:82px;color:#FFD600;text-shadow:6px 6px 0 #e65100,12px 12px 0 rgba(0,0,0,0.3);margin-bottom:50px;animation:tBounce 1.5s ease-in-out infinite alternate;letter-spacing:4px;}
-.chapters-grid{display:flex;flex-direction:column;align-items:center;gap:30px;}
-.chapters-row{display:flex;align-items:center;justify-content:center;gap:36px;}
-.ch-connector{font-size:56px;color:rgba(255,255,255,0.7);animation:connPulse 1.5s ease-in-out infinite alternate;pointer-events:none;}
-.ch-connector.down{font-size:64px;}
+/* CHAPTER SELECT (Optimized 2-Row 16:9 Grid) */
+#s-chapters{z-index:12;gap:0;padding:24px 40px 30px;overflow:hidden;justify-content:center;}
+.chapters-title{font-family:var(--fg);font-size:72px;color:#FFD600;text-shadow:5px 5px 0 #e65100,10px 10px 0 rgba(0,0,0,0.3);margin-bottom:28px;animation:tBounce 1.5s ease-in-out infinite alternate;letter-spacing:4px;text-align:center;}
+.chapters-grid{display:flex;flex-direction:column;align-items:center;gap:24px;}
+.chapters-row{display:flex;align-items:center;justify-content:center;gap:32px;}
+.ch-connector{font-size:52px;color:rgba(255,255,255,0.75);animation:connPulse 1.5s ease-in-out infinite alternate;pointer-events:none;}
 .chapter-card{
-  width:310px;height:355px;border-radius:36px;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:14px;cursor:pointer;position:relative;
-  overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.45),0 5px 0 rgba(0,0,0,0.3);
-  transition:transform 0.18s,box-shadow 0.18s;border:4px solid rgba(255,255,255,0.25);
+  width:320px;height:310px;border-radius:32px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:12px;cursor:pointer;position:relative;
+  overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,0.45),0 5px 0 rgba(0,0,0,0.3);
+  transition:transform 0.18s,box-shadow 0.18s,border-color 0.18s;border:4px solid rgba(255,255,255,0.28);
 }
-.chapter-card:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 30px 80px rgba(0,0,0,0.5),0 5px 0 rgba(0,0,0,0.3);}
+.chapter-card:hover,.chapter-card:focus-visible{transform:translateY(-8px) scale(1.04);box-shadow:0 28px 70px rgba(0,0,0,0.5),0 0 30px rgba(255,214,0,0.6);border-color:#FFD600;outline:none;}
 .chapter-card:active{transform:scale(0.96);box-shadow:0 10px 30px rgba(0,0,0,0.4);}
 .chapter-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.18) 0%,transparent 50%,rgba(0,0,0,0.1) 100%);pointer-events:none;}
 .ch-shimmer{position:absolute;top:-50%;left:-100%;width:60%;height:200%;background:linear-gradient(105deg,transparent,rgba(255,255,255,0.28),transparent);animation:shimmer 3.5s ease-in-out infinite;pointer-events:none;}
-.ch-num{position:absolute;top:14px;right:16px;width:52px;height:52px;border-radius:50%;background:rgba(0,0,0,0.28);border:3px solid rgba(255,255,255,0.45);display:flex;align-items:center;justify-content:center;font-family:var(--fg);font-size:28px;color:#fff;}
-.ch-icon{font-size:108px;line-height:1;filter:drop-shadow(4px 6px 10px rgba(0,0,0,0.35));animation:iconRock 2.2s ease-in-out infinite alternate;}
-.ch-name{font-family:var(--fg);font-size:52px;color:#fff;text-shadow:3px 3px 8px rgba(0,0,0,0.4);}
-.ch-sub{font-size:24px;color:rgba(255,255,255,0.82);font-weight:700;text-align:center;padding:0 16px;}
-.ch-stars{display:flex;gap:6px;font-size:32px;filter:drop-shadow(2px 2px 4px rgba(0,0,0,0.4));}
+.ch-num{position:absolute;top:12px;right:14px;width:48px;height:48px;border-radius:50%;background:rgba(0,0,0,0.3);border:3px solid rgba(255,255,255,0.45);display:flex;align-items:center;justify-content:center;font-family:var(--fg);font-size:26px;color:#fff;}
+.ch-icon{font-size:96px;line-height:1;filter:drop-shadow(4px 6px 10px rgba(0,0,0,0.35));animation:iconRock 2.2s ease-in-out infinite alternate;}
+.ch-name{font-family:var(--fg);font-size:46px;color:#fff;text-shadow:3px 3px 8px rgba(0,0,0,0.4);}
+.ch-sub{font-size:22px;color:rgba(255,255,255,0.85);font-weight:700;text-align:center;padding:0 14px;}
+.ch-stars{display:flex;gap:6px;font-size:28px;filter:drop-shadow(2px 2px 4px rgba(0,0,0,0.4));}
 
 /* GAME */
 #s-game{flex-direction:column;gap:0;z-index:5;padding:32px 52px;}
@@ -161,10 +170,21 @@ html,body{width:100%;height:100%;overflow:hidden;background:#05051a;display:flex
 .eng-card-icon{font-size:105px;line-height:1;filter:drop-shadow(4px 8px 12px rgba(0,0,0,0.4));animation:iconRock 2.2s ease-in-out infinite alternate;}
 .eng-card-name{font-family:var(--fg);font-size:52px;color:#fff;text-shadow:3px 3px 8px rgba(0,0,0,0.5);text-align:center;}
 .eng-card-desc{font-size:26px;color:rgba(255,255,255,0.88);font-weight:700;text-align:center;line-height:1.4;}
-.eng-chapter-card{width:310px;height:355px;border-radius:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;cursor:pointer;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.45),0 5px 0 rgba(0,0,0,0.3);transition:transform 0.18s,box-shadow 0.18s;border:4px solid rgba(255,255,255,0.25);background:linear-gradient(145deg,#7b1c1c,#b71c1c,#c62828);}
-.eng-chapter-card:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 30px 80px rgba(0,0,0,0.5),0 5px 0 rgba(0,0,0,0.3);}
+.eng-chapter-card{
+  width:320px;height:310px;border-radius:32px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:12px;cursor:pointer;position:relative;
+  overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,0.45),0 5px 0 rgba(0,0,0,0.3);
+  transition:transform 0.18s,box-shadow 0.18s,border-color 0.18s;border:4px solid #FFD600;
+  background:linear-gradient(145deg,#0d1b4a,#1a237e,#283593);
+}
+.eng-chapter-card:hover,.eng-chapter-card:focus-visible{transform:translateY(-8px) scale(1.04);box-shadow:0 28px 70px rgba(0,0,0,0.5),0 0 35px rgba(255,214,0,0.7);border-color:#fff;outline:none;}
 .eng-chapter-card:active{transform:scale(0.96);}
-.eng-chapter-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.18) 0%,transparent 50%,rgba(0,0,0,0.1) 100%);pointer-events:none;}
+.eng-chapter-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.2) 0%,transparent 50%,rgba(0,0,0,0.1) 100%);pointer-events:none;}
+.ch-badge-new{
+  position:absolute;top:12px;left:14px;background:#e53935;color:#fff;
+  font-family:var(--fg);font-size:18px;padding:4px 14px;border-radius:20px;
+  box-shadow:0 4px 12px rgba(229,57,53,0.5);border:2px solid #fff;animation:pulseBtn 1.8s ease-in-out infinite;
+}
 
 /* ENG GAME SCREEN */
 #s-eng-game{flex-direction:column;gap:0;padding:28px 60px 32px;}
@@ -262,9 +282,13 @@ html,body{width:100%;height:100%;overflow:hidden;background:#05051a;display:flex
 </style>
 </head>
 <body>
+<div id="gbg"></div>
 <div id="drag-ghost"></div>
 <div id="gw">
-<div id="gbg"></div>
+  <!-- PERSISTENT SMART TV CONTROLS -->
+  <div id="tv-top-bar">
+    <button id="btn-global-fs" onclick="toggleFS()" title="Layar Penuh 16:9 (Smart TV)">⛶ Layar Penuh</button>
+  </div>
 
 <!-- TITLE -->
 <div id="s-title" class="screen visible">
@@ -294,7 +318,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#05051a;display:flex
       <circle cx="167" cy="60" r="8" fill="#FFD600"/>
     </svg>
   </div>
-  <button class="btn-main" onclick="showChapters()">&#9654; MULAI MAIN</button>
+  <button class="btn-main" onclick="startApp()">&#9654; MULAI MAIN</button>
 </div>
 
 <!-- CHAPTER SELECT -->
@@ -1539,6 +1563,13 @@ function engShuffle(a){
 ============================================================ */
 let engNavIdx=0;
 document.addEventListener('keydown', function(e){
+  // Global TV Remote Fullscreen Toggle: key 'f' or 'F'
+  if(e.key==='f' || e.key==='F'){
+    toggleFS();
+    e.preventDefault();
+    return;
+  }
+
   const visibleScreen=document.querySelector('.screen.visible');
   if(!visibleScreen) return;
   const sId=visibleScreen.id;
@@ -1549,6 +1580,108 @@ document.addEventListener('keydown', function(e){
     if(sId==='s-eng-topic'){ showScreen('s-eng-submode'); e.preventDefault(); return; }
     if(sId==='s-eng-submode'){ showChapters(); e.preventDefault(); return; }
     if(sId==='s-eng-cel'){ engNextWord(); e.preventDefault(); return; }
+    if(sId==='s-game'){ backToChapters(); e.preventDefault(); return; }
+    if(sId==='s-chapters'){ resetAll(); e.preventDefault(); return; }
+  }
+
+  // Title Screen: Enter starts game
+  if(sId==='s-title'){
+    if(e.key==='Enter' || e.key===' '){
+      startApp();
+      e.preventDefault();
+      return;
+    }
+  }
+
+  // Chapter Selection Screen: 2x3 D-Pad Navigation
+  if(sId==='s-chapters'){
+    const cards=Array.from(document.querySelectorAll('#chgrid .chapter-card, #chgrid .eng-chapter-card'));
+    if(!cards.length) return;
+    let curIdx=cards.indexOf(document.activeElement);
+    if(curIdx===-1) curIdx=0;
+    if(e.key==='ArrowRight'){
+      curIdx=(curIdx + 1)%cards.length;
+      cards[curIdx].focus();
+      e.preventDefault();
+      return;
+    }else if(e.key==='ArrowLeft'){
+      curIdx=(curIdx - 1 + cards.length)%cards.length;
+      cards[curIdx].focus();
+      e.preventDefault();
+      return;
+    }else if(e.key==='ArrowDown'){
+      if(curIdx < 3 && curIdx + 3 < cards.length) curIdx += 3;
+      cards[curIdx].focus();
+      e.preventDefault();
+      return;
+    }else if(e.key==='ArrowUp'){
+      if(curIdx >= 3) curIdx -= 3;
+      cards[curIdx].focus();
+      e.preventDefault();
+      return;
+    }else if(e.key==='Enter' || e.key===' '){
+      if(document.activeElement && (document.activeElement.classList.contains('chapter-card') || document.activeElement.classList.contains('eng-chapter-card'))){
+        document.activeElement.click();
+      }else if(cards[curIdx]){
+        cards[curIdx].click();
+      }
+      e.preventDefault();
+      return;
+    }
+  }
+
+  // English Sub-Mode Screen: D-pad Left/Right
+  if(sId==='s-eng-submode'){
+    const cards=Array.from(document.querySelectorAll('.eng-mode-card'));
+    if(!cards.length) return;
+    let curIdx=cards.indexOf(document.activeElement);
+    if(curIdx===-1) curIdx=0;
+    if(e.key==='ArrowRight' || e.key==='ArrowDown'){
+      curIdx=(curIdx + 1)%cards.length;
+      cards[curIdx].focus();
+      e.preventDefault();
+      return;
+    }else if(e.key==='ArrowLeft' || e.key==='ArrowUp'){
+      curIdx=(curIdx - 1 + cards.length)%cards.length;
+      cards[curIdx].focus();
+      e.preventDefault();
+      return;
+    }else if(e.key==='Enter' || e.key===' '){
+      if(document.activeElement && document.activeElement.classList.contains('eng-mode-card')){
+        document.activeElement.click();
+      }else if(cards[curIdx]){
+        cards[curIdx].click();
+      }
+      e.preventDefault();
+      return;
+    }
+  }
+
+  // English Topic Screen: D-pad Left/Right
+  if(sId==='s-eng-topic'){
+    const cards=Array.from(document.querySelectorAll('.eng-topic-card'));
+    if(!cards.length) return;
+    let curIdx=cards.indexOf(document.activeElement);
+    if(curIdx===-1) curIdx=0;
+    if(e.key==='ArrowRight' || e.key==='ArrowDown'){
+      curIdx=(curIdx + 1)%cards.length;
+      cards[curIdx].focus();
+      e.preventDefault();
+      return;
+    }else if(e.key==='ArrowLeft' || e.key==='ArrowUp'){
+      curIdx=(curIdx - 1 + cards.length)%cards.length;
+      cards[curIdx].focus();
+      e.preventDefault();
+      return;
+    }else if(e.key==='Enter' || e.key===' '){
+      if(document.activeElement && document.activeElement.classList.contains('eng-topic-card')){
+        document.activeElement.click();
+      }else if(cards[curIdx]){
+        cards[curIdx].click();
+      }
+      e.preventDefault();
+      return;
+    }
   }
 
   // English Game screen navigation
@@ -1798,13 +1931,37 @@ const gs={
 };
 
 /* ============================================================
-   SCALE & DECORATIONS
+   SCALE & DECORATIONS (Smart TV 16:9 Full Screen Engine)
 ============================================================ */
 function scl(){
-  const W=document.getElementById('gw'),sx=innerWidth/1920,sy=innerHeight/1080,sc=Math.min(sx,sy);
-  W.style.transform=`scale(${sc})`;W.style.left=`${(innerWidth-1920*sc)/2}px`;W.style.top=`${(innerHeight-1080*sc)/2}px`;
+  const W=document.getElementById('gw');
+  if(!W) return;
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  const ratio = vw / vh;
+  
+  // Smart TV 16:9 full screen scaling:
+  // Most TVs and widescreen displays have an aspect ratio between 1.35 and 2.2.
+  // Using scale(sx, sy) ensures the entire 16:9 canvas spans edge-to-edge with 100% fill and ZERO black bars!
+  if (ratio >= 1.35 && ratio <= 2.2) {
+    const sx = vw / 1920;
+    const sy = vh / 1080;
+    W.style.transform = `scale(${sx}, ${sy})`;
+    W.style.transformOrigin = 'top left';
+    W.style.left = '0px';
+    W.style.top = '0px';
+  } else {
+    // Extreme aspect ratio (e.g. mobile portrait): scale uniformly with center alignment
+    const sc = Math.min(vw / 1920, vh / 1080);
+    W.style.transform = `scale(${sc})`;
+    W.style.transformOrigin = 'top left';
+    W.style.left = `${(vw - 1920 * sc) / 2}px`;
+    W.style.top = `${(vh - 1080 * sc) / 2}px`;
+  }
 }
-addEventListener('resize',scl);scl();
+window.addEventListener('resize', scl);
+window.addEventListener('orientationchange', ()=>setTimeout(scl, 150));
+scl();
 
 // Static decorations (stars + clouds)
 (function(){
@@ -1871,14 +2028,12 @@ function showChapters(){
 function renderChapterScreen(){
   const grid=document.getElementById('chgrid');
   grid.innerHTML='';
-  // Row 1: ch1, ch2, ch3
-  // Row 2: ch4, ch5
-  // Row 3: Eng mode (special)
+  // 2 rows x 3 cards (5 Indonesian Chapters + 1 English Mode)
   const row1=document.createElement('div');row1.className='chapters-row';
   const row2=document.createElement('div');row2.className='chapters-row';
-  const row3=document.createElement('div');row3.className='chapters-row';
   CHAPTERS.forEach((ch,i)=>{
     const card=makeChapterCard(ch,i);
+    card.tabIndex=0;
     if(i<3){
       if(i>0){const con=document.createElement('span');con.className='ch-connector';con.textContent='→';row1.appendChild(con);}
       row1.appendChild(card);
@@ -1887,27 +2042,40 @@ function renderChapterScreen(){
       row2.appendChild(card);
     }
   });
-  // English mode card
+  // Connector between Ch 5 and English mode card
+  const conEnd=document.createElement('span');conEnd.className='ch-connector';conEnd.textContent='→';row2.appendChild(conEnd);
+
+  // English mode card (Card 6)
   const engCard=document.createElement('div');
   engCard.className='eng-chapter-card';
+  engCard.tabIndex=0;
   const engStars=Object.values(egs.progress).reduce((a,b)=>a+b,0);
-  const engMaxStars=ENG_TOPICS.length*3;
   engCard.innerHTML=`
     <div class="ch-shimmer"></div>
-    <div class="ch-icon" style="font-size:100px;">🇬🇧</div>
-    <div class="ch-name" style="font-size:46px;">Bahasa Inggris</div>
-    <div class="ch-sub">3 Topik Kosakata</div>
+    <div class="ch-badge-new">✨ BARU!</div>
+    <div class="ch-icon" style="font-size:90px;">🇬🇧</div>
+    <div class="ch-name" style="font-size:38px;color:#FFD600;">Bahasa Inggris</div>
+    <div class="ch-sub">Flashcard Pintar & Bubbles</div>
     <div class="ch-stars">${'⭐'.repeat(Math.min(engStars,3))}${'☆'.repeat(Math.max(0,3-engStars))}</div>
   `;
   engCard.onclick=engOpenMode;
-  row3.appendChild(engCard);
-  const midCon=document.createElement('div');midCon.style.cssText='display:flex;justify-content:flex-end;padding-right:380px;';
-  const downArr=document.createElement('span');downArr.className='ch-connector down';downArr.textContent='↙';
-  midCon.appendChild(downArr);
-  const midCon2=document.createElement('div');midCon2.style.cssText='display:flex;justify-content:flex-start;padding-left:380px;';
-  const downArr2=document.createElement('span');downArr2.className='ch-connector down';downArr2.textContent='↙';
-  midCon2.appendChild(downArr2);
-  grid.appendChild(row1);grid.appendChild(midCon);grid.appendChild(row2);grid.appendChild(midCon2);grid.appendChild(row3);
+  engCard.addEventListener('focus',function(){if(window.engPlayCardFocus) engPlayCardFocus();});
+  row2.appendChild(engCard);
+
+  grid.appendChild(row1);
+  grid.appendChild(row2);
+
+  // Back button to title screen
+  const backRow=document.createElement('div');
+  backRow.style.cssText='display:flex;justify-content:center;margin-top:14px;';
+  backRow.innerHTML='<button class="iBtn" style="width:70px;height:70px;font-size:36px;" onclick="resetAll()" title="Kembali ke Menu">&#8592;</button>';
+  grid.appendChild(backRow);
+
+  // Auto-focus first card for Smart TV remote
+  setTimeout(()=>{
+    const first=grid.querySelector('.chapter-card');
+    if(first) first.focus();
+  }, 150);
 }
 
 function makeChapterCard(ch,idx){
@@ -2118,11 +2286,43 @@ function chapterComplete(){
    FLOW
 ============================================================ */
 function resetAll(){document.getElementById('gbg').style.background='linear-gradient(170deg,#1a1a6e 0%,#1565c0 45%,#42a5f5 78%,#90caf9 100%)';removeGroundDeco();showScreen('s-title');}
-function toggleFS(){
-  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});document.getElementById('btn-fs').textContent='⊡';}
-  else{document.exitFullscreen();document.getElementById('btn-fs').textContent='⛶';}
+
+function startApp(){
+  toggleFS(true);
+  showChapters();
 }
-document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement)document.getElementById('btn-fs').textContent='⛶';scl();});
+
+function toggleFS(onlyEnter = false){
+  const docEl = document.documentElement;
+  const isFull = !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+  
+  if(!isFull){
+    const req = docEl.requestFullscreen || docEl.webkitRequestFullscreen || docEl.mozRequestFullScreen || docEl.msRequestFullscreen;
+    if(req){ req.call(docEl).catch(()=>{}); }
+    updateFSBtn(true);
+  }else if(!onlyEnter){
+    const ex = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
+    if(ex){ ex.call(document).catch(()=>{}); }
+    updateFSBtn(false);
+  }
+}
+
+function updateFSBtn(isFull){
+  const btnG = document.getElementById('btn-global-fs');
+  if(btnG) btnG.innerHTML = isFull ? '⊡ Perkecil' : '⛶ Layar Penuh';
+  const btn1 = document.getElementById('btn-fs');
+  if(btn1) btn1.textContent = isFull ? '⊡' : '⛶';
+  const btn2 = document.getElementById('btn-fs2');
+  if(btn2) btn2.textContent = isFull ? '⊡' : '⛶';
+}
+
+['fullscreenchange','webkitfullscreenchange','mozfullscreenchange','MSFullscreenChange'].forEach(evt=>{
+  document.addEventListener(evt, ()=>{
+    const isFull = !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+    updateFSBtn(isFull);
+    setTimeout(scl, 120);
+  });
+});
 
 /* INIT */
 if(window.speechSynthesis){speechSynthesis.getVoices();speechSynthesis.addEventListener('voiceschanged',()=>speechSynthesis.getVoices());}
